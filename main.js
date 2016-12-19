@@ -24,7 +24,7 @@ function createWindow () {
 }
 
 app.on('ready', () => {
-  BrowserWindow.addDevToolsExtension('./reactdt');
+  //BrowserWindow.addDevToolsExtension('./reactdt');
   createWindow();
 });
 
