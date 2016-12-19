@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Eclipse Two</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> 
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+</head>
+<body>
+    <nav class="navbar navbar-light bg-faded">
+        <a class="navbar-brand" href="#">Eclipse Two</a>
+        <ul class="nav navbar-nav">
+            <li class="nav-item active">
+                <a class="nav-link" href="#">Code</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Debug</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Analysis</a>
+            </li>
+        </ul>
+        <form class="form-inline float-xs-right">
+            <input class="form-control" type="text" placeholder="Search">
+            <button class="btn btn-primary" type="submit">Search</button>
+        </form>
+    </nav> 
+
+    <script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="node_modules/tether/dist/js/tether.min.js"></script>
+    <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script>if (window.module) module = window.module;</script>
+
+    <script src="components/eclipse-ide.js"></script>
+    <eclipse-ide></eclipse-ide>
+</body>
+</html>

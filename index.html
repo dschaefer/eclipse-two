@@ -1,44 +1,23 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <title>Eclipse Two</title>
+  <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> 
-    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
-</head>
-<body>
-    <nav class="navbar navbar-light bg-faded">
-        <a class="navbar-brand" href="#">Eclipse Two</a>
-        <ul class="nav navbar-nav">
-            <li class="nav-item active">
-                <a class="nav-link" href="#">Code</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Debug</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Analysis</a>
-            </li>
-        </ul>
-        <form class="form-inline float-xs-right">
-            <input class="form-control" type="text" placeholder="Search">
-            <button class="btn btn-primary" type="submit">Search</button>
-        </form>
-    </nav> 
-
-    <script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
-    <script src="node_modules/jquery/dist/jquery.min.js"></script>
-    <script src="node_modules/tether/dist/js/tether.min.js"></script>
-    <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script>if (window.module) module = window.module;</script>
-
-    <script>
-        function registerElement(tag, cls) {
-            document.registerElement(tag, cls);
-            console.log("Registered " + tag);
-        }
-    </script>
-    <script src="build/eclipse-ide.js"></script>
-    <eclipse-ide></eclipse-ide>
-</body>
+    <title>Electron React</title>
+    <style type="text/css">
+      html,
+      body {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app" style="width: 100%;height: 100%"></div>
+  </body>
+  <script>
+    require('./dist/app.js')
+  </script>
 </html>
