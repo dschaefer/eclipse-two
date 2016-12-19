@@ -1,8 +1,6 @@
 # Eclipse Two Architecture Guide
 
 - Platform is Electron, an awesome combination of Chromium and node.js
-- Lifespan is expected to be 20+ years so picking frameworks needs to be done carefully. Only long proven frameworks will be accepted.
-  - To start, we accept and use Bootstrap and JQuery.
 - Use custom elements for componentizing the UI. Not much else interesting from web components.
 - Typescript is the language of choice. The application will grow pretty large and Typescript provides good modularity and type enforcement.
 - UI is organized as a hierarchical collection of Views.
@@ -17,3 +15,21 @@
 - Reuse an existing editor. For now choose Monaco. Switch to something else if it's better
 - Allow for registering other editors, mostly graphical for different file types
   - e.g. link script editor that shows the memory layout graphically
+- It's been difficult to decide what to use for an app framework. Here's what I considered
+  - Web Components, or at least custom elements.
+    - Very hard to use.
+    - Want to get this up and running quickly.
+  - Angular 2
+    - Certainly a lot of buzz. Complete framework. Google.
+    - But is it really that popular yet, will it be?
+  - React
+    - Have some experience with React.
+    - Our main wish is to provide a collection of reusable components
+    - Popularity is rising. Tools are mature.
+    - JSX is weird, but I think we need a template language anyway. As good as any.
+- React
+  - To start, we'll use React.
+  - Use react-bootstrap to get bootstrap.
+  - Build with babel directly. Don't need to minimize during development.
+  - Use flow for type checking.
+  - Typescript would be nice, but React seems pretty against it. And even then what does it's future really hold?
