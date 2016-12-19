@@ -23,6 +23,7 @@
     "monaco-editor": "^0.7.0",
     "react": "^15.4.1",
     "react-bootstrap": "^0.30.7",
-    "react-dom": "^15.4.1"
+    "react-dom": "^15.4.1",
+    "react-split-pane": "^0.1.57"
   }
 }

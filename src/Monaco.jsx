@@ -16,17 +16,25 @@ export default class Monaco extends React.Component {
 
         // workaround monaco-typescript not understanding the environment
         self.process.browser = true;
+    }
 
-        loader.require(['vs/editor/editor.main'], function() {
-            var editor = monaco.editor.create(document.getElementById('container'), {
-                value: [
-                        'function x() {',
-                        '\tconsole.log("Hello world!");',
-                        '}'
-                    ].join('\n'),
-                language: 'javascript'
-            });
+    createEditor() {
+        var editor = monaco.editor.create(document.getElementById('container'), {
+            value: [
+                'function x() {',
+                '\tconsole.log("Hello world!");',
+                '}'
+            ].join('\n'),
+            language: 'javascript'
         });
+    }
+
+    componentDidMount() {
+        if (typeof monaco === 'undefined') {
+            loader.require(['vs/editor/editor.main'], () => this.createEditor())
+        } else {
+            this.createEditor();
+        }
     }
 
     render() {
@@ -34,6 +42,7 @@ export default class Monaco extends React.Component {
             width: "100%",
             height: "100%"
         };
+
         return <div id="container" style={style}></div>;
     }
 }
