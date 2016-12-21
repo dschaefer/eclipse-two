@@ -1,9 +1,12 @@
+// @flow
 import React from 'react';
 import path from 'path';
 import loader from 'monaco-editor/min/vs/loader';
 
+declare var monaco;
+
 export default class Monaco extends React.Component {
-    constructor(props) {
+    constructor(props: any) {
         super(props);
 
         var baseUrl = 'file://' + path.resolve(path.join(__dirname, '../node_modules/monaco-editor/min')).replace(/\\/g, '/');

@@ -14,3 +14,17 @@ required and can launch and integrate with microservices. The Language Server Pr
 that integrate other tools.
 
 It's a platform that will serve us well for the next 20 years as Eclipse One has done for the last 20 years.
+
+## Plan
+
+### Phase 1 - Self Host
+
+First stage is to get the IDE to the point where we can self host. That includes the following features
+
+- File Explorer that navigates mounted directories and opens files in the editor.
+- Editor that supports JavaScript, HTML, CSS, and package.json.
+- Build support that runs 'npm run build' and presents output in a console pane
+- Launch support that runs 'npm start', presents output, and has a stop button that kills the process
+
+File Explorer will be hand roled using rc-tree (React Components Tree). Editor is Monaco.
+Build and Launch will follow design language of Eclipse Launch Bar.
