@@ -22,9 +22,19 @@ It's a platform that will serve us well for the next 20 years as Eclipse One has
 First stage is to get the IDE to the point where we can self host. That includes the following features
 
 - File Explorer that navigates mounted directories and opens files in the editor.
-- Editor that supports JavaScript, HTML, CSS, and package.json.
+- Text Editor that supports JavaScript, HTML, CSS, and package.json.
+- Folder Editor that supports adding and removing files in a directory.
 - Build support that runs 'npm run build' and presents output in a console pane
 - Launch support that runs 'npm start', presents output, and has a stop button that kills the process
 
 File Explorer will be hand roled using rc-tree (React Components Tree). Editor is Monaco.
 Build and Launch will follow design language of Eclipse Launch Bar.
+
+### Phase 2 - Git support
+
+Add UI to work with Git to further support self hosting.
+Also add Github page to support cloning of repo.
+
+Use nodegit as underlying API for Git commands. Added pane to FolderEditor for git operations.
+Some may be added to context menus in the FileExplorer.
+Github page uses webview with code injection to add a button to clone and set up the workspace.
