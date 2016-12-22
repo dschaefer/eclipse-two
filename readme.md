@@ -38,3 +38,22 @@ Also add Github page to support cloning of repo.
 Use nodegit as underlying API for Git commands. Added pane to FolderEditor for git operations.
 Some may be added to context menus in the FileExplorer.
 Github page uses webview with code injection to add a button to clone and set up the workspace.
+
+## Try it
+
+To get the IDE running, once you check out of source control, do the following
+
+```
+npm install
+npm run build
+npm start
+```
+
+That's it. I also have a "watch" script you can use to auto build while developing.
+I am also using Flow as a type checker which is pretty good at picking out errors with React.
+
+## Contributing
+
+See the [Architecture guide](architecture.md) for some of the philosophy we're taking here.
+The keys are to use React for now since it gives us a great head start.
+It's early days so be prepared for a lot of significant changes upstream while I work things out.
