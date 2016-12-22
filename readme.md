@@ -39,6 +39,11 @@ Use nodegit as underlying API for Git commands. Added pane to FolderEditor for g
 Some may be added to context menus in the FileExplorer.
 Github page uses webview with code injection to add a button to clone and set up the workspace.
 
+### Phase 3 - Native support
+
+To support writing extensions using node.js's native build capability, we'll add C++ support
+and start working with the LSP and CDT.
+
 ## Try it
 
 To get the IDE running, once you check out of source control, do the following
