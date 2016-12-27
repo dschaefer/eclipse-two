@@ -1,4 +1,3 @@
-// @flow
 import React from 'react';
 import Tree, { TreeNode } from 'rc-tree';
 import fs from 'fs';
@@ -51,6 +50,7 @@ export default class FileExplorer extends React.Component {
             fileData.push(file);
         }
 
+        this.onSelect = this.onSelect.bind(this);
         this.state = { fileData: fileData };
     }
 
@@ -87,6 +87,11 @@ export default class FileExplorer extends React.Component {
         });
     }
 
+    onSelect(selectedNodes: any, e: any) {
+        this.props.onOpen(e.node.props.eventKey);
+        console.log(e.node.props.eventKey);
+    }
+
     render() {
         const getNodes = (node: FileData) => {
             if (node.children) {
@@ -108,10 +113,15 @@ export default class FileExplorer extends React.Component {
 
         return (
             <div style={style}>
-                <Tree showLine loadData={(node) => this.onLoadData(node)}>
+                <Tree showLine loadData={(node) => this.onLoadData(node)}
+                    onSelect={(selectedNodes, e) => this.onSelect(selectedNodes, e)}>
                     {rootNodes}
                 </Tree>
             </div>
         );
     }
+}
+
+FileExplorer.propTypes = {
+    onOpen: React.PropTypes.func
 }

@@ -5,18 +5,35 @@ import Monaco from './Monaco';
 import FileExplorer from './FileExplorer';
 
 export default class CodePage extends React.Component {
+    state: {
+        path: string
+    }
+
+    constructor(props: any) {
+        super(props);
+
+        this.onOpen = this.onOpen.bind(this);
+        this.state = { path: '' }
+    }
+
+    onOpen(path: string) {
+        this.setState({ path });
+    }
+
     render() {
+        const style = {
+            width: '100%',
+            height: '100%'
+        }
         return (
-            <SplitPane split="vertical" defaultSize={200}>
-                <FileExplorer
-                />
-                <Monaco
-                    width="100%"
-                    height="100%"
-                    language="javascript"
-                    value="// type your code..."
-                />
-            </SplitPane>
+            <div style={style}>
+                <SplitPane split="vertical" defaultSize={200}>
+                    <FileExplorer onOpen={ this.onOpen }
+                    />
+                    <Monaco path={ this.state.path }
+                    />
+                </SplitPane>
+            </div>
         );
     }
 }
