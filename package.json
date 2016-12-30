@@ -8,7 +8,7 @@
     "start2": "electron main2.js",
     "build": "babel src --out-dir dist --source-maps",
     "watch": "babel src --out-dir dist --source-maps --watch",
-    "tsc": "tsc -w",
+    "build2": "babel src2 --out-dir dist2 --source-maps --watch",
     "flow": "flow; test $? -eq 0 -o $? -eq 2",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -18,8 +18,7 @@
     "babel-cli": "^6.18.0",
     "babel-preset-es2015": "^6.18.0",
     "babel-preset-react": "^6.16.0",
-    "electron": "^1.4.12",
-    "typescript": "^2.1.4"
+    "electron": "^1.4.12"
   },
   "dependencies": {
     "bootstrap": "^3.3.7",
