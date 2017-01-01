@@ -5,9 +5,10 @@
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  *******************************************************************************/
-import HSplitPane from './HSplitPane';
+//@flow
+require('./CodePage');
 
-export const EclipseTwo = document.registerElement('eclipse-two', class extends HTMLElement {
+const EclipseTwo = document.registerElement('eclipse-two', class extends HTMLElement {
     attachedCallback() {
         this.innerHTML = `
             <nav class="mainbar">
@@ -17,10 +18,9 @@ export const EclipseTwo = document.registerElement('eclipse-two', class extends 
                     <li><a href="#">Github</a></li>
                 </ul>
             </nav>
-            <eclipse-hsplitpane>
-                <p>Hi there</p>
-                <p>From the right side</p>
-            </eclipse-hsplitpane>
+            <eclipse-codepage></eclipse-codepage>
         `;
     }
 });
+
+export default EclipseTwo;
