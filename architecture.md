@@ -1,5 +1,8 @@
 # Eclipse Two Architecture Guide
 
+Note, I am experimenting with custom elements as a replacement for React. It's a more VanillaJS way of doing this and so far it's working well.
+This may change the decision on frameworks in the upcoming days.
+
 - Platform is Electron, an awesome combination of Chromium and node.js
 - Use custom elements for componentizing the UI. Not much else interesting from web components.
 - Typescript is the language of choice. The application will grow pretty large and Typescript provides good modularity and type enforcement.
