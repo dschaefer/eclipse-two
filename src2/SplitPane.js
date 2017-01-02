@@ -32,7 +32,6 @@ const Splitter = document.registerElement('eclipse-splitter', class extends HTML
         this.getLeft().style.width = `${widthLeft}px`;
         
         const widthRight = this.getRight().offsetLeft + this.getRight().offsetWidth - e.pageX - this.offsetWidth + this.startX;
-        console.log(widthRight);
         this.getRight().style.width = `${widthRight}px`;
     }
 
