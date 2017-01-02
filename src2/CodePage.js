@@ -14,7 +14,7 @@ const CodePage = document.registerElement('eclipse-codepage', class extends HTML
     attachedCallback() {
         this.innerHTML = `
             <eclipse-splitpane>
-                <eclipse-fileexplorer></eclipse-fileexplorer>
+                <eclipse-fileexplorer style="width: 20%;"></eclipse-fileexplorer>
                 <monaco-editor></monaco-editor>
             </eclipse-splitpane>
         `;

@@ -11,11 +11,15 @@ document.registerElement('eclipse-fileexplorer', class extends HTMLElement {
         this.innerHTML = `
             <ul class="fa-ul">
                 <li>
-                    <span class="fa-li fa fa-plus-square-o"></span>
+                    <span class="fa-li fa fa-minus-square-o"></span>
                     <a href="#">/Users/dschaefer</a>
                     <ul class="fa-ul">
                         <li>
-                            <span class="fa-li fa fa-file"></span>
+                            <span class="fa-li fa fa-plus-square-o"></span>
+                            <a href="#">mydir</a>
+                        </li>
+                        <li>
+                            <span class="fa-li fa fa-file-o"></span>
                             <a href="#">myfile.txt</a>
                         </li>
                     </ul>
@@ -25,5 +29,6 @@ document.registerElement('eclipse-fileexplorer', class extends HTMLElement {
 
         this.style.overflow = 'auto';
         this.style.height = '100%';
+        this.style.fontSize = '14px';
     }
 });
