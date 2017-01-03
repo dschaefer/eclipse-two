@@ -1,23 +1,21 @@
-/*******************************************************************************
- * Copyright (c) 2016, 2017 QNX Software Systems and others.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
- *******************************************************************************/
-// @flow
-const Splitter = document.registerElement('eclipse-splitter', class extends HTMLElement {
+export class Splitter extends HTMLElement {
+    static tag = 'eclipse-splitter';
+
     dragging: boolean;
     startX: number;
     _move: any;
     _stop: any;
 
+    static createElement(): Splitter {
+        return (<any> document).createElement(Splitter.tag);
+    }
+
     getLeft() {
-        return ((this.previousElementSibling : any) : HTMLElement);
+        return <HTMLElement> this.previousElementSibling;
     }
 
     getRight() {
-        return ((this.nextElementSibling: any) : HTMLElement);
+        return <HTMLElement> this.nextElementSibling;
     }
 
     createdCallback() {
@@ -42,7 +40,7 @@ const Splitter = document.registerElement('eclipse-splitter', class extends HTML
         window.addEventListener('mousemove', this._move);
     }
 
-    stopDragging() {
+    stopDragging(e: MouseEvent) {
         if (this.dragging) {
             window.removeEventListener('mousemove', this._move);
             window.removeEventListener('mouseup', this._stop);
@@ -61,14 +59,18 @@ const Splitter = document.registerElement('eclipse-splitter', class extends HTML
         this.style.cursor = 'col-resize';
 
         if (this.nextElementSibling) {
-            ((this.nextElementSibling : any) : HTMLElement).style.flex = 'auto';
+            (<HTMLElement> this.nextElementSibling).style.flex = 'auto';
         }
 
         this.addEventListener('mousedown', this.startDragging);
     }
-});
+}
 
-const SplitPane = document.registerElement('eclipse-splitpane', class extends HTMLElement {
+(<any> document).registerElement(Splitter.tag, Splitter);
+
+export default class SplitPane extends HTMLElement {
+    static tag = 'eclipse-splitpane';
+
     attachedCallback() {
         this.style.display = 'flex';
         this.style.overflow = 'hidden';
@@ -81,12 +83,10 @@ const SplitPane = document.registerElement('eclipse-splitpane', class extends HT
         }
 
         for (var i = 1; i < kids.length; i++) {
-            const splitter = new Splitter;
-            splitter.left = kids[i - 1];
-            splitter.right = kids[i];
+            const splitter = Splitter.createElement();
             this.insertBefore(splitter, kids[i]);
         }
     }
-});
+}
 
-export default SplitPane;
+(<any> document).registerElement(SplitPane.tag, SplitPane);

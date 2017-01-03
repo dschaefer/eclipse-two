@@ -8,8 +8,7 @@
     "start2": "electron main2.js",
     "build": "babel src --out-dir dist --source-maps",
     "watch": "babel src --out-dir dist --source-maps --watch",
-    "build2": "babel src2 --out-dir dist2 --source-maps --watch",
-    "flow": "flow server",
+    "tsc": "tsc -w",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Doug Schaefer and others",
@@ -19,9 +18,11 @@
     "babel-preset-es2015": "^6.18.0",
     "babel-preset-react": "^6.16.0",
     "electron": "^1.4.12",
-    "flow-bin": "^0.37.4"
+    "flow-bin": "^0.37.4",
+    "typescript": "^2.1.4"
   },
   "dependencies": {
+    "@types/node": "^6.0.55",
     "bootstrap": "^3.3.7",
     "font-awesome": "^4.7.0",
     "monaco-editor": "^0.7.0",
