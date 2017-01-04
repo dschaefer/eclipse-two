@@ -34,3 +34,20 @@ nav.mainbar a:hover {
 nav.mainbar a.active {
     background-color: #4caf50;
 }
+
+eclipse-fileexplorer .fa-ul {
+    margin-left: 1.5em;
+}
+
+eclipse-fileexplorer .fa-li {
+    left: -1.5em;
+    width: 1.5em;
+}
+
+eclipse-fileexplorer .fa-li.folder {
+    color: #dd0;
+}
+
+eclipse-fileexplorer a {
+    text-decoration: none;
+}

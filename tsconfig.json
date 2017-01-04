@@ -6,8 +6,12 @@
         "rootDirs" : [
             "src2"
         ],
+        "typeRoots": [
+            "node_modules/@types"
+        ],
         "rootDir": "src2",
-        "outDir": "dist2"
+        "outDir": "dist2",
+        "moduleResolution": "node"
     },
     "include": [
         "src2/**/*"

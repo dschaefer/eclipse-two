@@ -35,6 +35,6 @@ class MonacoEditor extends HTMLElement {
             this.createEditor();
         }
     }
-});
+}
 
 (<any> document).registerElement(MonacoEditor.tag, MonacoEditor);
