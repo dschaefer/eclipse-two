@@ -81,13 +81,16 @@ export default class FileExplorer extends HTMLUListElement {
     attachedCallback(): void {
         this.style.overflow = 'auto';
         this.style.height = '100%';
+        this.style.width = '20%';
         this.style.fontSize = '14px';
+        this.style.whiteSpace = 'nowrap';
 
         const ul = document.createElement('ul');
         ul.classList.add('fa-ul');
         this.appendChild(ul);
 
-        ul.appendChild(this.createFileNode("/Users/dschaefer", "/Users/dschaefer"));
+        const myroot = path.resolve(__dirname, '..');
+        ul.appendChild(this.createFileNode(myroot, path.basename(myroot)));
     }
 }
 

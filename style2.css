@@ -4,7 +4,8 @@ html, body {
     margin: 0;
     padding: 0;
     overflow: hidden;
-    font-family: Arial, Helvetica, sans-serif
+    font-family: Arial, Helvetica, sans-serif;
+    background: #1e1e1e;
 }
 
 nav.mainbar ul {
@@ -48,6 +49,11 @@ eclipse-fileexplorer .fa-li.folder {
     color: #dd0;
 }
 
+eclipse-fileexplorer .fa-li.file {
+    color: white;
+}
+
 eclipse-fileexplorer a {
     text-decoration: none;
+    color: white;
 }

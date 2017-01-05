@@ -62,7 +62,6 @@ class Splitter extends HTMLElement {
         this.style.borderLeft = '3px';
         this.style.borderRight = '3px';
         this.style.borderStyle = 'solid';
-        this.style.borderColor = 'white';
         this.style.cursor = 'col-resize';
 
         if (this.nextElementSibling) {

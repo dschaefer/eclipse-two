@@ -5,6 +5,7 @@
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  *******************************************************************************/
+/// <reference path="../node_modules/monaco-editor/monaco.d.ts" />
 import * as loader from 'monaco-editor/min/vs/loader';
 import * as path from 'path';
 import * as fs from 'fs';
@@ -16,12 +17,10 @@ loader.require.config({
     baseUrl: baseUrl
 });
 
-declare var monaco: any;
-
 export default class MonacoEditor extends HTMLElement {
     static tag = 'monaco-editor';
 
-    editor: any;
+    editor: monaco.editor.IStandaloneCodeEditor;
 
     static createElement(): MonacoEditor {
         return <MonacoEditor> document.createElement(MonacoEditor.tag);
@@ -44,10 +43,20 @@ export default class MonacoEditor extends HTMLElement {
     }
 
     createEditor(contents: string) {
+        if (this.editor) {
+            this.editor.dispose();
+        }
+        
         this.editor = monaco.editor.create(this, {
             value: contents,
-            language: 'javascript'
+            language: 'javascript',
+            theme: 'vs-dark'
         });
+    }
+
+    attachedCallback(): void {
+        this.style.height = '100%';
+        this.style.width = '100%';
     }
 }
 
