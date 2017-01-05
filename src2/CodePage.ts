@@ -5,20 +5,28 @@
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  *******************************************************************************/
-require('./SplitPane');
-require('./FileExplorer');
-require('./Monaco');
+import SplitPane from './SplitPane';
+import FileExporer from './FileExplorer';
+import MonacoEditor from './Monaco';
 
 export default class CodePage extends HTMLDivElement {
     static tag = 'eclipse-codepage';
 
     attachedCallback(): void {
-        this.innerHTML = `
-            <eclipse-splitpane>
-                <eclipse-fileexplorer style="width: 20%;"></eclipse-fileexplorer>
-                <monaco-editor></monaco-editor>
-            </eclipse-splitpane>
-        `;
+        const splitPane = SplitPane.createElement();
+
+        const fileExplorer = FileExporer.createElement();
+        splitPane.appendChild(fileExplorer);
+
+        const monaco = MonacoEditor.createElement();
+        splitPane.appendChild(monaco);
+
+        fileExplorer.addEventListener('open-file', (e: CustomEvent) => {
+            e.stopPropagation();
+            monaco.openFile(e.detail.filePath);
+        });
+
+        this.appendChild(splitPane);
 
         this.style.height = '100%';
     }

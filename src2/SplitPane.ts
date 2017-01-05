@@ -78,6 +78,10 @@ class Splitter extends HTMLElement {
 export default class SplitPane extends HTMLElement {
     static tag = 'eclipse-splitpane';
 
+    static createElement(): SplitPane {
+        return <SplitPane> document.createElement(SplitPane.tag);
+    }
+
     attachedCallback() {
         this.style.display = 'flex';
         this.style.overflow = 'hidden';

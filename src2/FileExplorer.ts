@@ -14,8 +14,8 @@ export default class FileExplorer extends HTMLUListElement {
     static folderOpen = 'fa-folder-open';
     static fileIcon = 'fa-file-o';
 
-    createElement(): FileExplorer {
-        return (<any> document).createElement(FileExplorer.tag);
+    static createElement(): FileExplorer {
+        return <FileExplorer> document.createElement(FileExplorer.tag);
     }
 
     clickNode(e: MouseEvent) {
@@ -38,11 +38,20 @@ export default class FileExplorer extends HTMLUListElement {
                 span.classList.remove(FileExplorer.folderClosed);
                 span.classList.add(FileExplorer.folderOpen);
             });
-        } else {
+        } else if (span.classList.contains(FileExplorer.folderOpen)) {
             li.children[1].remove();
 
             span.classList.remove(FileExplorer.folderOpen);
             span.classList.add(FileExplorer.folderClosed);
+        } else {
+            const openEvent = new CustomEvent('open-file', {
+                detail: {
+                    filePath: filePath
+                },
+                bubbles: true,
+                cancelable: true
+            })
+            entry.dispatchEvent(openEvent);
         }
     }
 
@@ -53,9 +62,7 @@ export default class FileExplorer extends HTMLUListElement {
         const isDir = fs.lstatSync(filePath).isDirectory();
 
         const entry = document.createElement('div');
-        if (isDir) {
-            entry.addEventListener('click', (e) => this.clickNode(e));
-        }
+        entry.addEventListener('click', (e) => this.clickNode(e));
         li.appendChild(entry);
 
         const span = document.createElement('span');

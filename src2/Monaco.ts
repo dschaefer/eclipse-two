@@ -7,6 +7,7 @@
  *******************************************************************************/
 import * as loader from 'monaco-editor/min/vs/loader';
 import * as path from 'path';
+import * as fs from 'fs';
 
 const basePath = path.resolve(path.join(__dirname, '../node_modules/monaco-editor/min')).replace(/\\/g, '/').replace(/ /g, '%20');
 const baseUrl = ('/' === basePath.charAt(0) ? 'file://' : 'file:///') + basePath;
@@ -17,30 +18,36 @@ loader.require.config({
 
 declare var monaco: any;
 
-class MonacoEditor extends HTMLElement {
-    editor: any;
-
+export default class MonacoEditor extends HTMLElement {
     static tag = 'monaco-editor';
 
-    createEditor() {
-        this.editor = monaco.editor.create(this, {
-            value: `console.log()\n`,
-            language: 'javascript'
+    editor: any;
+
+    static createElement(): MonacoEditor {
+        return <MonacoEditor> document.createElement(MonacoEditor.tag);
+    }
+
+    openFile(filePath: string) {
+        fs.readFile(filePath, 'UTF-8', (err, data) => {
+            if (typeof monaco === 'undefined') {
+                // workaround monaco-css not understanding the environment
+                (<any> self).module = undefined;
+
+                // workaround monaco-typescript not understanding the environment
+                (<any> self).process.browser = true;
+
+                loader.require(['vs/editor/editor.main'], () => this.createEditor(data));
+            } else {
+                this.createEditor(data);
+            }
         });
     }
 
-    attachedCallback() {
-        if (typeof monaco === 'undefined') {
-            // workaround monaco-css not understanding the environment
-            (<any> self).module = undefined;
-
-            // workaround monaco-typescript not understanding the environment
-            (<any> self).process.browser = true;
-
-            loader.require(['vs/editor/editor.main'], () => this.createEditor());
-        } else {
-            this.createEditor();
-        }
+    createEditor(contents: string) {
+        this.editor = monaco.editor.create(this, {
+            value: contents,
+            language: 'javascript'
+        });
     }
 }
 
