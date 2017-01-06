@@ -5,31 +5,19 @@
   "main": "main.js",
   "scripts": {
     "start": "electron main.js",
-    "start2": "electron main2.js",
-    "build": "babel src --out-dir dist --source-maps",
-    "watch": "babel src --out-dir dist --source-maps --watch",
-    "tsc": "tsc -w",
+    "build": "tsc",
+    "watch": "tsc -w",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Doug Schaefer and others",
   "license": "EPL-1.0",
   "devDependencies": {
-    "babel-cli": "^6.18.0",
-    "babel-preset-es2015": "^6.18.0",
-    "babel-preset-react": "^6.16.0",
     "electron": "^1.4.12",
-    "flow-bin": "^0.37.4",
-    "typescript": "^2.1.4"
+    "typescript": "^2.1.4",
+    "@types/node": "^6.0.55"
   },
   "dependencies": {
-    "@types/node": "^6.0.55",
-    "bootstrap": "^3.3.7",
     "font-awesome": "^4.7.0",
-    "monaco-editor": "^0.7.0",
-    "rc-tree": "^1.4.1",
-    "react": "^15.4.1",
-    "react-bootstrap": "^0.30.7",
-    "react-dom": "^15.4.1",
-    "react-split-pane": "^0.1.57"
+    "monaco-editor": "^0.7.0"
   }
 }

@@ -4,16 +4,16 @@
         "sourceMap": true,
         "allowJs": true,
         "rootDirs" : [
-            "src2"
+            "src"
         ],
         "typeRoots": [
             "node_modules/@types"
         ],
-        "rootDir": "src2",
-        "outDir": "dist2",
+        "rootDir": "src",
+        "outDir": "dist",
         "moduleResolution": "node"
     },
     "include": [
-        "src2/**/*"
+        "src/**/*"
     ]
 }

@@ -1,11 +1,21 @@
 # Eclipse Two Architecture Guide
 
-Note, I am experimenting with custom elements as a replacement for React. It's a more VanillaJS way of doing this and so far it's working well.
-This may change the decision on frameworks in the upcoming days.
-
 - Platform is Electron, an awesome combination of Chromium and node.js
-- Use custom elements for componentizing the UI. Not much else interesting from web components.
-- Typescript is the language of choice. The application will grow pretty large and Typescript provides good modularity and type enforcement.
+  - Chrome Dev Tools is also very useful for debugging and inspecting the pages
+- After considering web front end frameworks, especially React, we're instead focusing on the core frameworks provided by the Chromium browser itself.
+  - The UI elements are componentized using custom elements from the Web Components spec using document.registerElement.
+  - Custom events are created to signal actions have been requested, like open-file.
+- Use of third party libraries will be considered carefully
+  - Care must be taken to ensure future proofing, but if use of a library is isolated, then that should be OK
+  - For example, we've started using Font Awesome for icons.
+  - We're trying hard not to use Bootstrap, convenient as it may be, it is somewhat opinionated on how it works
+- In the ends, using plain JS, CSS, and HTML is pretty good. w3schools is especially good at teaching CSS tricks.
+- We are also using TypeScript.
+  - In theory, the IDE will become quite large and we need to program like it and declare types as much as we can.
+  - The tooling around TypeScript with Visual Studio Code is also great for learning what methods are available on the various classes.
+
+The following things are plans. These things haven't been implemented yet and may change as we discuss them.
+
 - UI is organized as a hierarchical collection of Views.
   - Views contain other Views.
   - The top most view is selected from the Nav Bar
@@ -18,21 +28,3 @@ This may change the decision on frameworks in the upcoming days.
 - Reuse an existing editor. For now choose Monaco. Switch to something else if it's better
 - Allow for registering other editors, mostly graphical for different file types
   - e.g. link script editor that shows the memory layout graphically
-- It's been difficult to decide what to use for an app framework. Here's what I considered
-  - Web Components, or at least custom elements.
-    - Very hard to use.
-    - Want to get this up and running quickly.
-  - Angular 2
-    - Certainly a lot of buzz. Complete framework. Google.
-    - But is it really that popular yet, will it be?
-  - React
-    - Have some experience with React.
-    - Our main wish is to provide a collection of reusable components
-    - Popularity is rising. Tools are mature.
-    - JSX is weird, but I think we need a template language anyway. As good as any.
-- React
-  - To start, we'll use React.
-  - Use react-bootstrap to get bootstrap.
-  - Build with babel directly. Don't need to minimize during development.
-  - Use flow for type checking.
-  - Typescript would be nice, but React seems pretty against it. And even then what does it's future really hold?

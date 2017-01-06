@@ -31,7 +31,6 @@ function createWindow () {
 }
 
 app.on('ready', () => {
-  //BrowserWindow.addDevToolsExtension('./reactdt');
   createWindow();
 });
 
