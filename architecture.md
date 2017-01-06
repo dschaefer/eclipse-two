@@ -9,7 +9,7 @@
   - Care must be taken to ensure future proofing, but if use of a library is isolated, then that should be OK
   - For example, we've started using Font Awesome for icons.
   - We're trying hard not to use Bootstrap, convenient as it may be, it is somewhat opinionated on how it works
-- In the ends, using plain JS, CSS, and HTML is pretty good. w3schools is especially good at teaching CSS tricks.
+- In the end, using plain JS, CSS, and HTML is pretty good. w3schools is especially good at teaching CSS tricks.
 - We are also using TypeScript.
   - In theory, the IDE will become quite large and we need to program like it and declare types as much as we can.
   - The tooling around TypeScript with Visual Studio Code is also great for learning what methods are available on the various classes.
