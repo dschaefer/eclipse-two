@@ -62,3 +62,6 @@ I am also using Flow as a type checker which is pretty good at picking out error
 See the [Architecture guide](architecture.md) for some of the philosophy we're taking here.
 The keys are to use React for now since it gives us a great head start.
 It's early days so be prepared for a lot of significant changes upstream while I work things out.
+
+Since the plan is to move this to Eclipse, we'll need contributors to sign the Eclipse CLA.
+When submitting a PR, include you're Eclipse account info so we can link things together.
