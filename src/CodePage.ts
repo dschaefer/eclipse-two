@@ -5,12 +5,21 @@
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  *******************************************************************************/
+import Page from './Page';
 import SplitPane from './SplitPane';
 import FileExporer from './FileExplorer';
 import MonacoEditor from './Monaco';
 
-export default class CodePage extends HTMLDivElement {
+export default class CodePage extends Page {
     static tag = 'eclipse-codepage';
+
+    static createElement() : CodePage {
+        return <CodePage> document.createElement(CodePage.tag);
+    }
+
+    getName(): string {
+        return 'Code';
+    }
 
     attachedCallback(): void {
         const splitPane = SplitPane.createElement();
