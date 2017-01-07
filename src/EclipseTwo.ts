@@ -7,6 +7,7 @@
  *******************************************************************************/
 import Page from './Page';
 import CodePage from './CodePage';
+import GithubPage from './GithubPage';
 
 class EclipseTwo extends HTMLElement {
     headerList: HTMLUListElement;
@@ -23,16 +24,22 @@ class EclipseTwo extends HTMLElement {
         a.href = '#';
         a.setAttribute('page-name', name);
         a.appendChild(document.createTextNode(name));
+        a.addEventListener('click', () => this.activatePage(page));
         li.appendChild(a);
         this.appendChild(page);
+
+        page.style.display = 'none';
     }
 
     activatePage(page: Page) {
         if (this.activeTab) {
             this.activeTab.classList.remove('active');
+            this.activePage.style.display = 'none';
         }
         this.activeTab = <HTMLAnchorElement> this.headerList.querySelector(`a[page-name="${page.getName()}"]`);
         this.activeTab.classList.add('active');
+        this.activePage = page;
+        this.activePage.style.display = 'inline';
     }
 
     attachedCallback(): void {
@@ -53,12 +60,8 @@ class EclipseTwo extends HTMLElement {
         const codePage = CodePage.createElement();
         this.addPage(codePage);
 
-        const li3 = document.createElement('li');
-        this.headerList.appendChild(li3);
-        const a3 = document.createElement('a');
-        a3.href = '#';
-        a3.appendChild(document.createTextNode('Github'));
-        li3.appendChild(a3);
+        const githubPage = GithubPage.createElement();
+        this.addPage(githubPage);
 
         this.activatePage(codePage);
     }
