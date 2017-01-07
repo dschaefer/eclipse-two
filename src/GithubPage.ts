@@ -19,10 +19,17 @@ export default class GithubPage extends Page {
     }
 
     attachedCallback(): void {
-        const webview = document.createElement('webview');
+        const webview: any = document.createElement('webview');
         webview.setAttribute('src', 'https://github.com/dschaefer/eclipse-two');
+        webview.setAttribute('preload', './dist/githubPreload.js');
         webview.style.height = '100%';
         this.appendChild(webview);
+
+        /*
+        webview.addEventListener('dom-ready', () => {
+            webview.openDevTools()
+        });
+        */
     }
 }
 
