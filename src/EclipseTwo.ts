@@ -8,6 +8,8 @@
 import Page from './Page';
 import CodePage from './CodePage';
 import GithubPage from './GithubPage';
+import DemoD3Page from './DemoD3Page';
+import Demo3DPage from './Demo3DPage';
 
 class EclipseTwo extends HTMLElement {
     headerList: HTMLUListElement;
@@ -59,9 +61,9 @@ class EclipseTwo extends HTMLElement {
 
         const codePage = CodePage.createElement();
         this.addPage(codePage);
-
-        const githubPage = GithubPage.createElement();
-        this.addPage(githubPage);
+        this.addPage(GithubPage.createElement());
+        this.addPage(DemoD3Page.createElement());
+        this.addPage(Demo3DPage.createElement());
 
         this.activatePage(codePage);
     }
