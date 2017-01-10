@@ -55,7 +55,8 @@ npm start
 ```
 
 That's it. I also have a "watch" script you can use to auto build while developing.
-I am also using Flow as a type checker which is pretty good at picking out errors with React.
+
+BTW, make sure you're using a recent version of npm that can handle @typings.
 
 ## Contributing
 
