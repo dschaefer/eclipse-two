@@ -8,7 +8,7 @@
 import Page from './Page';
 import SplitPane from './SplitPane';
 import FileExporer from './FileExplorer';
-import { EditorTab } from './Editor';
+import { Editor, EditorTab } from './Editor';
 import MonacoEditor from './Monaco';
 import * as path from 'path';
 
@@ -21,18 +21,18 @@ export default class CodePage extends Page {
 
     tabList: HTMLUListElement;
     editorSpace: HTMLElement;
-    activeEditor: MonacoEditor;
+    activeEditor: Editor;
 
     getName(): string {
         return 'Code';
     }
 
-    activateEditor(monaco: MonacoEditor) {
+    activateEditor(editor: Editor) {
         if (this.activeEditor) {
             this.activeEditor.active = false;
         }
 
-        this.activeEditor = monaco;
+        this.activeEditor = editor;
         this.activeEditor.active = true;
     }
 
@@ -42,6 +42,21 @@ export default class CodePage extends Page {
         const monaco = MonacoEditor.createElement();
         this.editorSpace.appendChild(monaco);
         monaco.openFile(filePath);
+        monaco.addEventListener('close-editor', (e: CustomEvent) => {
+            e.stopPropagation();
+            const editor: Editor = e.detail.editor;
+            if (editor === this.activeEditor) {
+                for (var i = 1; i < this.editorSpace.children.length; ++i) {
+                    if (editor !== this.editorSpace.children[i]) {
+                        this.activateEditor(<Editor> this.editorSpace.children[i]);
+                        break;
+                    }
+                }
+            }
+
+            this.editorSpace.removeChild(editor);
+            this.tabList.removeChild(editor.editorTab);
+        });
 
         const tab = monaco.editorTab;
         this.tabList.appendChild(tab);

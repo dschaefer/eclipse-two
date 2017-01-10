@@ -62,16 +62,16 @@ export default class MonacoEditor extends Editor {
         this.style.width = '100%';
     }
 
-    set active(val: boolean) {
+    set activex(val: boolean) {
         if (val) {
             this.style.display = 'block';
-            this.editorTab.a.classList.add('active');
+            this.editorTab.classList.add('active');
             if (this.editor) {
                 this.editor.layout();
             }
         } else {
             this.style.display = 'none';
-            this.editorTab.a.classList.remove('active');
+            this.editorTab.classList.remove('active');
         }
     }
 }

@@ -22,6 +22,21 @@ export class EditorTab extends HTMLLIElement {
         this.a.href = '#';
         this.a.textContent = path.basename(this.editor.filePath);
         this.appendChild(this.a);
+
+        const span = document.createElement('span');
+        span.classList.add('fa', 'fa-times-circle');
+        span.addEventListener('click', (e: Event) => {
+            e.stopPropagation();
+            const closeEvent = new CustomEvent('close-editor', {
+                detail: {
+                    editor: this.editor
+                },
+                bubbles: true,
+                cancelable: true
+            })
+            this.editor.dispatchEvent(closeEvent);
+        })
+        this.appendChild(span);
     }
 }
 
@@ -46,10 +61,10 @@ export abstract class Editor extends HTMLElement {
     set active(val: boolean) {
         if (val) {
             this.style.display = 'block';
-            this.editorTab.a.classList.add('active');
+            this.editorTab.classList.add('active');
         } else {
             this.style.display = 'none';
-            this.editorTab.a.classList.remove('active');
+            this.editorTab.classList.remove('active');
         }
     }
 }

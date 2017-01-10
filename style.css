@@ -45,21 +45,24 @@ nav.editortabs ul {
 
 nav.editortabs eclipse-editortab {
     float: left;
+    color: white;
+    padding: 0px 10px;
 }
 
 nav.editortabs a {
-    display: block;
     color: white;
+    display: block;
+    float: left;
     text-align: center;
     text-decoration: none;
-    padding: 0px 0px;
+    padding-right: 10px;
 }
 
-nav.editortabs a:hover {
+nav.editortabs eclipse-editortab:hover {
     background-color: #111;
 }
 
-nav.editortabs a.active {
+nav.editortabs eclipse-editortab.active {
     background-color: #4caf50;
 }
 
