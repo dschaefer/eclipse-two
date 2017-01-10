@@ -1,0 +1,55 @@
+/*******************************************************************************
+ * Copyright (c) 2017 QNX Software Systems and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *******************************************************************************/
+import * as path from 'path';
+
+export class EditorTab extends HTMLLIElement {
+    static tag = 'eclipse-editortab';
+
+    static createElement(): EditorTab {
+        return <EditorTab> document.createElement(EditorTab.tag);
+    }
+
+    editor: Editor;
+    a: HTMLAnchorElement;
+
+    attachedCallback() {
+        this.a = document.createElement('a');
+        this.a.href = '#';
+        this.a.textContent = path.basename(this.editor.filePath);
+        this.appendChild(this.a);
+    }
+}
+
+(<any> document).registerElement(EditorTab.tag, EditorTab);
+
+export abstract class Editor extends HTMLElement {
+    filePath: string;
+    private _editorTab: EditorTab;
+
+    openFile(filePath: string) {
+        this.filePath = filePath;
+    }
+
+    get editorTab(): EditorTab {
+        if (!this._editorTab) {
+            this._editorTab = EditorTab.createElement();
+            this._editorTab.editor = this;
+        }
+        return this._editorTab;
+    }
+
+    set active(val: boolean) {
+        if (val) {
+            this.style.display = 'block';
+            this.editorTab.a.classList.add('active');
+        } else {
+            this.style.display = 'none';
+            this.editorTab.a.classList.remove('active');
+        }
+    }
+}

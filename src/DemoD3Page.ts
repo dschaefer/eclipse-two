@@ -30,6 +30,8 @@ export default class DemoD3Page extends Page {
         //if (this.style.display && this.style.display !== 'none') {
             var chartdata = [40, 60, 80, 100, 70, 120, 100, 60, 70, 150, 120, 140];
 
+            var bounds = this.svg.getBoundingClientRect();
+
             d3.select(this.svg)
                 .selectAll('rect').data(chartdata)
                 .enter().append('rect')
@@ -39,7 +41,7 @@ export default class DemoD3Page extends Page {
                 .attr('width', 40)
                 .attr('height', data => data)
                 .attr('x', (data, i) => i * (40 + 20))
-                .attr('y', data => 400 - data);
+                .attr('y', data => bounds.height - 100 - data);
         //}
 
         //requestAnimationFrame(() => this.render());

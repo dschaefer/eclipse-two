@@ -36,6 +36,33 @@ nav.mainbar a.active {
     background-color: #4caf50;
 }
 
+nav.editortabs ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+nav.editortabs eclipse-editortab {
+    float: left;
+}
+
+nav.editortabs a {
+    display: block;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    padding: 0px 0px;
+}
+
+nav.editortabs a:hover {
+    background-color: #111;
+}
+
+nav.editortabs a.active {
+    background-color: #4caf50;
+}
+
 eclipse-fileexplorer .fa-ul {
     margin-left: 1.5em;
 }

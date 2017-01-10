@@ -6,6 +6,7 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *******************************************************************************/
 /// <reference path="../node_modules/monaco-editor/monaco.d.ts" />
+import { Editor } from './Editor';
 import * as loader from 'monaco-editor/min/vs/loader';
 import * as path from 'path';
 import * as fs from 'fs';
@@ -17,7 +18,7 @@ loader.require.config({
     baseUrl: baseUrl
 });
 
-export default class MonacoEditor extends HTMLElement {
+export default class MonacoEditor extends Editor {
     static tag = 'monaco-editor';
 
     editor: monaco.editor.IStandaloneCodeEditor;
@@ -27,6 +28,8 @@ export default class MonacoEditor extends HTMLElement {
     }
 
     openFile(filePath: string) {
+        super.openFile(filePath);
+
         fs.readFile(filePath, 'UTF-8', (err, data) => {
             if (typeof monaco === 'undefined') {
                 // workaround monaco-css not understanding the environment
@@ -57,6 +60,19 @@ export default class MonacoEditor extends HTMLElement {
     attachedCallback(): void {
         this.style.height = '100%';
         this.style.width = '100%';
+    }
+
+    set active(val: boolean) {
+        if (val) {
+            this.style.display = 'block';
+            this.editorTab.a.classList.add('active');
+            if (this.editor) {
+                this.editor.layout();
+            }
+        } else {
+            this.style.display = 'none';
+            this.editorTab.a.classList.remove('active');
+        }
     }
 }
 
