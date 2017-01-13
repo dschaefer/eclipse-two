@@ -50,9 +50,28 @@ export default class MonacoEditor extends Editor {
             this.editor.dispose();
         }
         
+        var language: string;
+
+        switch (path.extname(this.filePath)) {
+            case '.js':
+                language = 'javascript';
+                break;
+            case '.html':
+                language = 'html';
+                break;
+            case '.css':
+                language = 'css';
+                break;
+            case '.json':
+                language = 'json';
+                break;
+            default:
+                language = 'javascript';
+        }
+
         this.editor = monaco.editor.create(this, {
             value: contents,
-            language: 'javascript',
+            language: language,
             theme: 'vs-dark'
         });
     }
@@ -60,19 +79,6 @@ export default class MonacoEditor extends Editor {
     attachedCallback(): void {
         this.style.height = '100%';
         this.style.width = '100%';
-    }
-
-    set activex(val: boolean) {
-        if (val) {
-            this.style.display = 'block';
-            this.editorTab.classList.add('active');
-            if (this.editor) {
-                this.editor.layout();
-            }
-        } else {
-            this.style.display = 'none';
-            this.editorTab.classList.remove('active');
-        }
     }
 }
 

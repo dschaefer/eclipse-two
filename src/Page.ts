@@ -7,6 +7,8 @@
  *******************************************************************************/
 
 abstract class Page extends HTMLElement {
+    pageActive: boolean;
+    
     abstract getName(): string;
 }
 

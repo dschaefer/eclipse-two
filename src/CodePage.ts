@@ -89,6 +89,14 @@ export default class CodePage extends Page {
 
         this.appendChild(splitPane);
         this.style.height = '100%';
+
+        document.addEventListener('keydown', (e: KeyboardEvent) => {
+            if (e.metaKey && e.which === 83) {
+                console.log('Ctrl+S!');
+                e.preventDefault();
+                return false;
+            }
+        });
     }
 }
 

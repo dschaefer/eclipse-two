@@ -1,6 +1,6 @@
 # Eclipse Two
 
-The real next-generation Eclipse IDE based on Electron.
+A full featured IDE based on Electron.
 
 The philosophy is to treat the IDE as a web-site which has access to local resources and tools as well as cloud based services.
 It brings a new user experience to the desktop IDE that is friendly, integrated, and powerful.
