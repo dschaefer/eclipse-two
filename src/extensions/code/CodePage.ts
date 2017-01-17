@@ -5,11 +5,13 @@
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  *******************************************************************************/
-import Page from './Page';
-import SplitPane from './SplitPane';
-import FileExporer from './FileExplorer';
-import { Editor, EditorTab } from './Editor';
-import MonacoEditor from './Monaco';
+import Page from 'ui/Page';
+import { Editor, EditorTab } from 'ui/Editor';
+
+import SplitPane from 'components/SplitPane';
+import FileExporer from 'components/FileExplorer';
+import MonacoEditor from 'components/Monaco';
+
 import * as path from 'path';
 
 export default class CodePage extends Page {

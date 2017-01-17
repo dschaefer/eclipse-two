@@ -2,9 +2,9 @@
   "name": "eclipse-two",
   "version": "0.1.0",
   "description": "Eclipse Two IDE built with Electron",
-  "main": "main.js",
+  "main": "dist/core/main.js",
   "scripts": {
-    "start": "electron main.js",
+    "start": "electron .",
     "build": "tsc",
     "watch": "tsc -w",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -20,6 +20,7 @@
     "@types/d3": "^4.4.0",
     "@types/es6-promise": "0.0.32",
     "@types/three": "^0.81.0",
+    "app-module-path": "^2.2.0",
     "d3": "^4.4.1",
     "font-awesome": "^4.7.0",
     "monaco-editor": "^0.7.0",

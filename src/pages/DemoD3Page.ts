@@ -1,4 +1,4 @@
-import Page from './Page';
+import Page from '../ui/Page';
 import * as d3 from 'd3';
 
 export default class DemoD3Page extends Page {

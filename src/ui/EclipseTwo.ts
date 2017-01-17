@@ -5,16 +5,26 @@
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  *******************************************************************************/
-import Page from './Page';
-import CodePage from './CodePage';
-import GithubPage from './GithubPage';
-import DemoD3Page from './DemoD3Page';
-import Demo3DPage from './Demo3DPage';
+import * as electron from 'electron';
+import * as path from 'path';
+import * as fs from 'fs';
+
+// Neat trick to add dist to the node module path
+// Will need to do this for user local extensions as well
+require('app-module-path').addPath(path.resolve(electron.remote.app.getAppPath(), 'dist'));
+
+import { UIExtension, PageProvider } from 'ui/UIExtension';
+import Page from 'ui/Page';
+
+import GithubPage from 'pages/GithubPage';
+import DemoD3Page from 'pages/DemoD3Page';
+import Demo3DPage from 'pages/Demo3DPage';
 
 class EclipseTwo extends HTMLElement {
     headerList: HTMLUListElement;
     activeTab: HTMLAnchorElement;
     activePage: Page;
+    extensions: Array<UIExtension>;
 
     addPage(page: Page) {
         const name = page.getName();
@@ -44,6 +54,34 @@ class EclipseTwo extends HTMLElement {
         this.activePage.style.display = 'inline';
     }
 
+    loadExtensions(): void {
+        this.extensions = [];
+        const extDir = path.resolve(electron.remote.app.getAppPath(), "dist/extensions");
+        const srcDir = path.resolve(electron.remote.app.getAppPath(), "src/extensions");
+        fs.readdirSync(extDir).map(dir => {
+            const myExtDir = path.resolve(extDir, dir);
+            const mySrcDir = path.resolve(srcDir, dir);
+            const extPackage = path.resolve(mySrcDir, 'package.json');
+            if (fs.existsSync(extPackage)) {
+                const pkg = JSON.parse(fs.readFileSync(extPackage).toString());
+                if (pkg.uiExtension) {
+                    const extension: UIExtension = require(path.resolve(myExtDir, pkg.uiExtension)).default;
+                    this.extensions.push(extension);
+                    this.extensions[pkg.name] = extension;
+
+                    extension.pageProviders.map(provider => {
+                        extension.pageProviders[provider.id] = provider;
+                    });
+                }
+            }
+        })
+
+    }
+
+    createdCallback(): void {
+        this.loadExtensions();
+    }
+
     attachedCallback(): void {
         const nav = document.createElement('nav');
         nav.classList.add('mainbar');
@@ -59,7 +97,7 @@ class EclipseTwo extends HTMLElement {
         a1.appendChild(document.createTextNode('Ecilpse Two'));
         li1.appendChild(a1);
 
-        const codePage = CodePage.createElement();
+        const codePage = this.extensions['eclipse-code'].pageProviders['code-page'].create();
         this.addPage(codePage);
         this.addPage(GithubPage.createElement());
         this.addPage(DemoD3Page.createElement());

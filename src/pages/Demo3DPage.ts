@@ -1,4 +1,4 @@
-import Page from './Page';
+import Page from '../ui/Page';
 import * as THREE from 'three';
 
 export default class Demo3DPage extends Page {

@@ -14,17 +14,11 @@
   - In theory, the IDE will become quite large and we need to program like it and declare types as much as we can.
   - The tooling around TypeScript with Visual Studio Code is also great for learning what methods are available on the various classes.
 
-The following things are plans. These things haven't been implemented yet and may change as we discuss them.
+## UI Architecture
 
-- UI is organized as a hierarchical collection of Views.
-  - Views contain other Views.
-  - The top most view is selected from the Nav Bar
-  - Routes select what to show down the hierarchy
-- Plug-in architecture similar to Eclipse
-  - extension point registry to avoid loading javascript files until needed
-  - Use a plugin.json file to specify extensions, extension points
-- Since we'll be reusing a lot of core plug-ins from Eclipse One would be good to co-ordinate that
-  - Have an Equinox instance running that we can install the needed plug-ins into.
-- Reuse an existing editor. For now choose Monaco. Switch to something else if it's better
-- Allow for registering other editors, mostly graphical for different file types
-  - e.g. link script editor that shows the memory layout graphically
+This describes the current thinking around how we'll layout the UI. This will definitely evolve as we learn and as we get more ideas.
+
+- Top level is a nav bar that selects between pages to view. This is similar to the Eclipse Perspective. However it is more whole.
+- The pages are simply custom HTML elements. There is no preconceived notion of what's on the pages.
+- To help around standardization of the look and feel and to speed development, we'll create a reusable collection of elements that
+page designers can subclass.

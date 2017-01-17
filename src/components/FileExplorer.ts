@@ -5,6 +5,7 @@
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  *******************************************************************************/
+import * as electron from 'electron';
 import * as path from 'path';
 import * as fs from 'fs';
 
@@ -89,7 +90,7 @@ export default class FileExplorer extends HTMLUListElement {
         ul.classList.add('fa-ul');
         this.appendChild(ul);
 
-        const myroot = path.resolve(__dirname, '..');
+        const myroot = electron.remote.app.getAppPath();
         ul.appendChild(this.createFileNode(myroot, path.basename(myroot)));
     }
 }

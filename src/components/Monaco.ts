@@ -5,13 +5,14 @@
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  *******************************************************************************/
-/// <reference path="../node_modules/monaco-editor/monaco.d.ts" />
-import { Editor } from './Editor';
+/// <reference path="../../node_modules/monaco-editor/monaco.d.ts" />
+import { Editor } from 'ui/Editor';
 import * as loader from 'monaco-editor/min/vs/loader';
+import * as electron from 'electron';
 import * as path from 'path';
 import * as fs from 'fs';
 
-const basePath = path.resolve(path.join(__dirname, '../node_modules/monaco-editor/min')).replace(/\\/g, '/').replace(/ /g, '%20');
+const basePath = path.resolve(path.join(electron.remote.app.getAppPath(), 'node_modules/monaco-editor/min')).replace(/\\/g, '/').replace(/ /g, '%20');
 const baseUrl = ('/' === basePath.charAt(0) ? 'file://' : 'file:///') + basePath;
 
 loader.require.config({
