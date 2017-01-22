@@ -94,7 +94,7 @@ class EclipseTwo extends HTMLElement {
         this.headerList.appendChild(li1);
         const a1 = document.createElement('a');
         a1.href = '#';
-        a1.appendChild(document.createTextNode('Ecilpse Two'));
+        a1.appendChild(document.createTextNode('Eclipse Two'));
         li1.appendChild(a1);
 
         const codePage = this.extensions['eclipse-code'].pageProviders['code-page'].create();
