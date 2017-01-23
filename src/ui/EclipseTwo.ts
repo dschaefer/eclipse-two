@@ -28,10 +28,10 @@ class EclipseTwo extends TabFolder {
         return <EclipseTwo> document.createElement(EclipseTwo.tag);
     }
 
-    extensions: Array<UIExtension>;
+    extensions: { [id: string]: UIExtension };
 
     loadExtensions(): void {
-        this.extensions = [];
+        this.extensions = {};
         const extDir = path.resolve(electron.remote.app.getAppPath(), "dist/extensions");
         const srcDir = path.resolve(electron.remote.app.getAppPath(), "src/extensions");
         fs.readdirSync(extDir).map(dir => {
@@ -42,7 +42,6 @@ class EclipseTwo extends TabFolder {
                 const pkg = JSON.parse(fs.readFileSync(extPackage).toString());
                 if (pkg.uiExtension) {
                     const extension: UIExtension = require(path.resolve(myExtDir, pkg.uiExtension)).default;
-                    this.extensions.push(extension);
                     this.extensions[pkg.name] = extension;
                 }
             }

@@ -7,7 +7,11 @@
  *******************************************************************************/
 
 export interface TabItem extends HTMLElement {
+    // The element to show in the tab header for this tab item
     tabContent: HTMLElement;
+
+    // Close the tab, return false to reject the close
+    close(): boolean;
 }
 
 class TabElement extends HTMLLIElement {
