@@ -13,46 +13,22 @@ import * as fs from 'fs';
 // Will need to do this for user local extensions as well
 require('app-module-path').addPath(path.resolve(electron.remote.app.getAppPath(), 'dist'));
 
+import TabFolder from 'components/TabFolder';
+
 import { UIExtension, PageProvider } from 'ui/UIExtension';
-import Page from 'ui/Page';
 
 import GithubPage from 'pages/GithubPage';
 import DemoD3Page from 'pages/DemoD3Page';
 import Demo3DPage from 'pages/Demo3DPage';
 
-class EclipseTwo extends HTMLElement {
-    headerList: HTMLUListElement;
-    activeTab: HTMLAnchorElement;
-    activePage: Page;
+class EclipseTwo extends TabFolder {
+    static tag = 'eclipse-two';
+
+    static createElement(): EclipseTwo {
+        return <EclipseTwo> document.createElement(EclipseTwo.tag);
+    }
+
     extensions: Array<UIExtension>;
-
-    addPage(page: Page) {
-        const name = page.getName();
-
-        const li = document.createElement('li');
-        this.headerList.appendChild(li);
-
-        const a = document.createElement('a');
-        a.href = '#';
-        a.setAttribute('page-name', name);
-        a.appendChild(document.createTextNode(name));
-        a.addEventListener('click', () => this.activatePage(page));
-        li.appendChild(a);
-        this.appendChild(page);
-
-        page.style.display = 'none';
-    }
-
-    activatePage(page: Page) {
-        if (this.activeTab) {
-            this.activeTab.classList.remove('active');
-            this.activePage.style.display = 'none';
-        }
-        this.activeTab = <HTMLAnchorElement> this.headerList.querySelector(`a[page-name="${page.getName()}"]`);
-        this.activeTab.classList.add('active');
-        this.activePage = page;
-        this.activePage.style.display = 'inline';
-    }
 
     loadExtensions(): void {
         this.extensions = [];
@@ -83,28 +59,33 @@ class EclipseTwo extends HTMLElement {
     }
 
     attachedCallback(): void {
-        const nav = document.createElement('nav');
-        nav.classList.add('mainbar');
-        this.appendChild(nav);
+        super.attachedCallback();
 
-        this.headerList = document.createElement('ul');
-        nav.appendChild(this.headerList);
+        // Temporary until we get a real dashboard
+        const dashboard = document.createElement('div');
+        dashboard.setAttribute(TabFolder.attributeLabel, 'Eclipse Two');
+        this.appendChild(dashboard);
 
-        const li1 = document.createElement('li');
-        this.headerList.appendChild(li1);
-        const a1 = document.createElement('a');
-        a1.href = '#';
-        a1.appendChild(document.createTextNode('Eclipse Two'));
-        li1.appendChild(a1);
+        // Load Code page from extension
+        const codeProvider = this.extensions['eclipse-code'].pageProviders['code-page'];
+        const codePage = <HTMLElement> codeProvider.create();
+        codePage.setAttribute(TabFolder.attributeLabel, codeProvider.label);
+        // Make active for now
+        codePage.classList.add(TabFolder.classActive);
+        this.appendChild(codePage);
 
-        const codePage = this.extensions['eclipse-code'].pageProviders['code-page'].create();
-        this.addPage(codePage);
-        this.addPage(GithubPage.createElement());
-        this.addPage(DemoD3Page.createElement());
-        this.addPage(Demo3DPage.createElement());
+        const githubPage = GithubPage.createElement();
+        githubPage.setAttribute(TabFolder.attributeLabel, 'Github');
+        this.appendChild(githubPage);
 
-        this.activatePage(codePage);
+        const demoD3Page = DemoD3Page.createElement();
+        demoD3Page.setAttribute(TabFolder.attributeLabel, 'D3 Demo');
+        this.appendChild(demoD3Page);
+
+        const demo3DPage = Demo3DPage.createElement();
+        demo3DPage.setAttribute(TabFolder.attributeLabel, '3D Demo');
+        this.appendChild(demo3DPage);
     }
 }
 
-(<any> document).registerElement('eclipse-two', EclipseTwo);
+(<any> document).registerElement(EclipseTwo.tag, EclipseTwo);

@@ -5,17 +5,12 @@
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  *******************************************************************************/
-import Page from '../ui/Page';
 
-export default class GithubPage extends Page {
+export default class GithubPage extends HTMLElement {
     static tag = 'eclipse-github';
 
     static createElement(): GithubPage {
         return <GithubPage> document.createElement(GithubPage.tag);
-    }
-
-    getName(): string {
-        return 'Github';
     }
 
     attachedCallback(): void {

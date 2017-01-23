@@ -1,9 +1,7 @@
-import Page from 'ui/Page';
-
 export interface PageProvider {
     id: string;
-    name: string;
-    create(): Page;
+    label: string;
+    create(): HTMLElement;
 }
 
 export interface UIExtension {

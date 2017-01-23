@@ -6,9 +6,6 @@
         "rootDirs" : [
             "src"
         ],
-        "typeRoots": [
-            "node_modules/@types"
-        ],
         "rootDir": "src",
         "outDir": "dist",
         "moduleResolution": "node",

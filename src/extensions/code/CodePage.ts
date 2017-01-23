@@ -5,7 +5,6 @@
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  *******************************************************************************/
-import Page from 'ui/Page';
 import { Editor, EditorTab } from 'ui/Editor';
 
 import SplitPane from 'components/SplitPane';
@@ -14,7 +13,7 @@ import MonacoEditor from 'components/Monaco';
 
 import * as path from 'path';
 
-export default class CodePage extends Page {
+export default class CodePage extends HTMLElement {
     static tag = 'eclipse-codepage';
 
     static createElement() : CodePage {
@@ -24,10 +23,6 @@ export default class CodePage extends Page {
     tabList: HTMLUListElement;
     editorSpace: HTMLElement;
     activeEditor: Editor;
-
-    getName(): string {
-        return 'Code';
-    }
 
     activateEditor(editor: Editor) {
         if (this.activeEditor) {
@@ -90,7 +85,6 @@ export default class CodePage extends Page {
         nav.appendChild(this.tabList);
 
         this.appendChild(splitPane);
-        this.style.height = '100%';
 
         document.addEventListener('keydown', (e: KeyboardEvent) => {
             if (e.metaKey && e.which === 83) {

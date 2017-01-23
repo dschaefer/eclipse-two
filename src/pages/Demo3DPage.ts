@@ -1,7 +1,6 @@
-import Page from '../ui/Page';
 import * as THREE from 'three';
 
-export default class Demo3DPage extends Page {
+export default class Demo3DPage extends HTMLElement {
     static tag = 'eclipse-demo3d';
 
     static createElement(): Demo3DPage {
@@ -17,12 +16,7 @@ export default class Demo3DPage extends Page {
     radius: number;
     theta: number;
 
-    getName(): string {
-        return '3D Demo';
-    }
-
     attachedCallback(): void {
-        this.style.height = '100%';
         this.style.backgroundColor = '#f0f0f0';
         this.radius = 100;
         this.theta = 0;

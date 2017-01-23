@@ -8,7 +8,7 @@ html, body {
     background: #1e1e1e;
 }
 
-nav.mainbar ul {
+eclipse-two > .eclipse-tab-header {
     background-color: #333;
     list-style-type: none;
     margin: 0;
@@ -16,11 +16,11 @@ nav.mainbar ul {
     overflow: hidden;
 }
 
-nav.mainbar li {
+eclipse-two > .eclipse-tab-header eclipse-tab {
     float: left;
 }
 
-nav.mainbar a {
+eclipse-two > .eclipse-tab-header a {
     display: block;
     color: white;
     text-align: center;
@@ -28,11 +28,11 @@ nav.mainbar a {
     padding: 14px 16px;
 }
 
-nav.mainbar a:hover {
+eclipse-two > .eclipse-tab-header a:hover {
     background-color: #111;
 }
 
-nav.mainbar a.active {
+eclipse-two > .eclipse-tab-header .eclipse-tab-active {
     background-color: #4caf50;
 }
 
