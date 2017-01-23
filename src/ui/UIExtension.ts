@@ -1,9 +1,12 @@
 export interface PageProvider {
-    id: string;
     label: string;
     create(): HTMLElement;
 }
 
-export interface UIExtension {
-    pageProviders: Array<PageProvider>;
+export class UIExtension {
+    pageProviders: { [id: string]: PageProvider };
+
+    constructor() {
+        this.pageProviders = {};
+    }
 }

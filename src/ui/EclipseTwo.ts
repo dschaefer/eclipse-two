@@ -44,14 +44,9 @@ class EclipseTwo extends TabFolder {
                     const extension: UIExtension = require(path.resolve(myExtDir, pkg.uiExtension)).default;
                     this.extensions.push(extension);
                     this.extensions[pkg.name] = extension;
-
-                    extension.pageProviders.map(provider => {
-                        extension.pageProviders[provider.id] = provider;
-                    });
                 }
             }
-        })
-
+        });
     }
 
     createdCallback(): void {
