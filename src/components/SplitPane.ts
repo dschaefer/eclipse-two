@@ -83,12 +83,12 @@ export default class SplitPane extends HTMLElement {
         this.style.width = '100%';
         this.style.height = '100%';
 
-        var kids = [];
-        for (var i = 0; i < this.children.length; i++) {
+        let kids = [];
+        for (let i = 0; i < this.children.length; i++) {
             kids.push(this.children[i]);
         }
 
-        for (var i = 1; i < kids.length; i++) {
+        for (let i = 1; i < kids.length; i++) {
             const splitter = new Splitter();
             this.insertBefore(splitter, kids[i]);
         }

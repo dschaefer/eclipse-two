@@ -1,3 +1,30 @@
-/node_modules/
-/dist/
+#############################
+# Gitignore for Eclipse-two #
+#############################
+
+
+#########
+# IDE's #
+#########
+
+
+# JetBrains #
 /.idea/
+
+# Visual Studio #
+/.vs/
+
+
+###########
+# Node JS #
+###########
+
+/node_modules/
+
+
+##########
+# Output #
+##########
+
+/dist/
+

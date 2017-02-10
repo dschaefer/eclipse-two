@@ -18,9 +18,9 @@ export default class DemoD3Page extends HTMLElement {
 
     render() {
         //if (this.style.display && this.style.display !== 'none') {
-            var chartdata = [40, 60, 80, 100, 70, 120, 100, 60, 70, 150, 120, 140];
+            let chartdata = [40, 60, 80, 100, 70, 120, 100, 60, 70, 150, 120, 140];
 
-            var bounds = this.svg.getBoundingClientRect();
+            let bounds = this.svg.getBoundingClientRect();
 
             d3.select(this.svg)
                 .selectAll('rect').data(chartdata)

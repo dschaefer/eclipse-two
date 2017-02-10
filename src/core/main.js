@@ -5,25 +5,26 @@
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  *******************************************************************************/
-const electron = require('electron')
-const app = electron.app
-const BrowserWindow = electron.BrowserWindow
 
-const path = require('path')
-const url = require('url')
+const electron = require('electron');
+const app = electron.app;
+const BrowserWindow = electron.BrowserWindow;
 
-let mainWindow
+const path = require('path');
+const url = require('url');
+
+let mainWindow;
 
 app.setName("Two IDE");
 
 function createWindow () {
-  mainWindow = new BrowserWindow({width: 800, height: 600})
+  mainWindow = new BrowserWindow({width: 800, height: 600});
 
   mainWindow.loadURL(url.format({
     pathname: path.join(app.getAppPath(), 'src/ui/index.html'),
     protocol: 'file:',
     slashes: true
-  }))
+  }));
 
   //mainWindow.webContents.openDevTools()
 
@@ -40,10 +41,10 @@ app.on('window-all-closed', function () {
   if (process.platform !== 'darwin') {
     app.quit()
   }
-})
+});
 
 app.on('activate', function () {
   if (mainWindow === null) {
     createWindow()
   }
-})
+});

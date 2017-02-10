@@ -40,7 +40,7 @@ export default class CodePage extends HTMLElement {
             e.stopPropagation();
             const editor: Editor = e.detail.editor;
             if (editor === this.activeEditor) {
-                for (var i = 1; i < this.editorSpace.children.length; ++i) {
+                for (let i = 1; i < this.editorSpace.children.length; ++i) {
                     if (editor !== this.editorSpace.children[i]) {
                         this.activateEditor(<Editor> this.editorSpace.children[i]);
                         break;
