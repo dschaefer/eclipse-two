@@ -6,6 +6,7 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *******************************************************************************/
 import { Editor, EditorTab } from 'ui/Editor';
+import customElements from 'ui/customElements';
 
 import SplitPane from 'components/SplitPane';
 import FileExporer from 'components/FileExplorer';
@@ -15,10 +16,6 @@ import * as path from 'path';
 
 export default class CodePage extends HTMLElement {
     static tag = 'eclipse-codepage';
-
-    static createElement() : CodePage {
-        return <CodePage> document.createElement(CodePage.tag);
-    }
 
     tabList: HTMLUListElement;
     editorSpace: HTMLElement;
@@ -36,7 +33,7 @@ export default class CodePage extends HTMLElement {
     openEditor(filePath: string) {
         const name = path.basename(filePath);
 
-        const monaco = MonacoEditor.createElement();
+        const monaco = new MonacoEditor();
         this.editorSpace.appendChild(monaco);
         monaco.openFile(filePath);
         monaco.addEventListener('close-editor', (e: CustomEvent) => {
@@ -62,10 +59,10 @@ export default class CodePage extends HTMLElement {
         this.activateEditor(monaco);
     }
 
-    attachedCallback(): void {
-        const splitPane = SplitPane.createElement();
+    connectedCallback(): void {
+        const splitPane = new SplitPane();
 
-        const fileExplorer = FileExporer.createElement();
+        const fileExplorer = new FileExporer();
         splitPane.appendChild(fileExplorer);
 
         fileExplorer.addEventListener('open-file', (e: CustomEvent) => {
@@ -96,4 +93,4 @@ export default class CodePage extends HTMLElement {
     }
 }
 
-(<any> document).registerElement(CodePage.tag, CodePage);
+customElements.define(CodePage.tag, CodePage);

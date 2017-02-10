@@ -1,11 +1,8 @@
+import customElements from 'ui/customElements';
 import * as THREE from 'three';
 
 export default class Demo3DPage extends HTMLElement {
     static tag = 'eclipse-demo3d';
-
-    static createElement(): Demo3DPage {
-        return <Demo3DPage> document.createElement(Demo3DPage.tag);
-    }
 
     camera: THREE.PerspectiveCamera;
     scene: THREE.Scene;
@@ -16,7 +13,7 @@ export default class Demo3DPage extends HTMLElement {
     radius: number;
     theta: number;
 
-    attachedCallback(): void {
+    connectedCallback(): void {
         this.style.backgroundColor = '#f0f0f0';
         this.radius = 100;
         this.theta = 0;
@@ -101,4 +98,4 @@ export default class Demo3DPage extends HTMLElement {
     }
 }
 
-(<any> document).registerElement(Demo3DPage.tag, Demo3DPage);
+customElements.define(Demo3DPage.tag, Demo3DPage);

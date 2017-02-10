@@ -12,18 +12,17 @@
   "author": "Doug Schaefer and others",
   "license": "EPL-1.0",
   "devDependencies": {
-    "electron": "^1.4.12",
-    "typescript": "^2.1.4",
-    "@types/node": "^6.0.55"
+    "electron": "1.5",
+    "typescript": "2.1",
+    "@types/node": "^6.0.55",
+    "@types/d3": "^4.4.0",
+    "@types/three": "^0.81.0"
   },
   "dependencies": {
-    "@types/d3": "^4.4.0",
-    "@types/es6-promise": "0.0.32",
-    "@types/three": "^0.81.0",
     "app-module-path": "^2.2.0",
     "d3": "^4.4.1",
     "font-awesome": "^4.7.0",
-    "monaco-editor": "^0.7.0",
+    "monaco-editor": "0.8",
     "three": "^0.83.0"
   }
 }

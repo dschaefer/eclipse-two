@@ -5,19 +5,16 @@
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  *******************************************************************************/
+import customElements from 'ui/customElements';
 import * as path from 'path';
 
-export class EditorTab extends HTMLLIElement {
+export class EditorTab extends HTMLElement {
     static tag = 'eclipse-editortab';
-
-    static createElement(): EditorTab {
-        return <EditorTab> document.createElement(EditorTab.tag);
-    }
 
     editor: Editor;
     a: HTMLAnchorElement;
 
-    attachedCallback() {
+    connectedCallback() {
         this.a = document.createElement('a');
         this.a.href = '#';
         this.a.textContent = path.basename(this.editor.filePath);
@@ -40,7 +37,7 @@ export class EditorTab extends HTMLLIElement {
     }
 }
 
-(<any> document).registerElement(EditorTab.tag, EditorTab);
+customElements.define(EditorTab.tag, EditorTab);
 
 export abstract class Editor extends HTMLElement {
     filePath: string;
@@ -52,7 +49,7 @@ export abstract class Editor extends HTMLElement {
 
     get editorTab(): EditorTab {
         if (!this._editorTab) {
-            this._editorTab = EditorTab.createElement();
+            this._editorTab = new EditorTab();
             this._editorTab.editor = this;
         }
         return this._editorTab;

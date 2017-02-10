@@ -6,7 +6,7 @@ let codeUIExtension = new UIExtension();
 codeUIExtension.pageProviders['code-page'] = {
     label: 'Code',
     create(): HTMLElement {
-        return CodePage.createElement();
+        return new CodePage();
     }
 }
 

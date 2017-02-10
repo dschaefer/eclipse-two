@@ -5,15 +5,12 @@
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  *******************************************************************************/
+import customElements from 'ui/customElements';
 
 export default class GithubPage extends HTMLElement {
     static tag = 'eclipse-github';
 
-    static createElement(): GithubPage {
-        return <GithubPage> document.createElement(GithubPage.tag);
-    }
-
-    attachedCallback(): void {
+    connectedCallback(): void {
         const home = 'https://github.com/dschaefer/eclipse-two';
         const controls = document.createElement('div');
         controls.id = 'github-controls';
@@ -87,4 +84,4 @@ export default class GithubPage extends HTMLElement {
     }
 }
 
-(<any> document).registerElement(GithubPage.tag, GithubPage);
+customElements.define(GithubPage.tag, GithubPage);

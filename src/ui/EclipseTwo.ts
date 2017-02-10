@@ -13,6 +13,8 @@ import * as fs from 'fs';
 // Will need to do this for user local extensions as well
 require('app-module-path').addPath(path.resolve(electron.remote.app.getAppPath(), 'dist'));
 
+import customElements from 'ui/customElements';
+
 import TabFolder from 'components/TabFolder';
 
 import { UIExtension, PageProvider } from 'ui/UIExtension';
@@ -21,14 +23,15 @@ import GithubPage from 'pages/GithubPage';
 import DemoD3Page from 'pages/DemoD3Page';
 import Demo3DPage from 'pages/Demo3DPage';
 
-class EclipseTwo extends TabFolder {
+export default class EclipseTwo extends TabFolder {
     static tag = 'eclipse-two';
 
-    static createElement(): EclipseTwo {
-        return <EclipseTwo> document.createElement(EclipseTwo.tag);
-    }
-
     extensions: { [id: string]: UIExtension };
+
+    constructor() {
+        super();
+        this.loadExtensions();
+    }
 
     loadExtensions(): void {
         this.extensions = {};
@@ -48,12 +51,8 @@ class EclipseTwo extends TabFolder {
         });
     }
 
-    createdCallback(): void {
-        this.loadExtensions();
-    }
-
-    attachedCallback(): void {
-        super.attachedCallback();
+    connectedCallback(): void {
+        super.connectedCallback();
 
         // Temporary until we get a real dashboard
         const dashboard = document.createElement('div');
@@ -68,18 +67,18 @@ class EclipseTwo extends TabFolder {
         codePage.classList.add(TabFolder.classActive);
         this.appendChild(codePage);
 
-        const githubPage = GithubPage.createElement();
+        const githubPage = new GithubPage();
         githubPage.setAttribute(TabFolder.attributeLabel, 'Github');
         this.appendChild(githubPage);
 
-        const demoD3Page = DemoD3Page.createElement();
+        const demoD3Page = new DemoD3Page();
         demoD3Page.setAttribute(TabFolder.attributeLabel, 'D3 Demo');
         this.appendChild(demoD3Page);
 
-        const demo3DPage = Demo3DPage.createElement();
+        const demo3DPage = new Demo3DPage();
         demo3DPage.setAttribute(TabFolder.attributeLabel, '3D Demo');
         this.appendChild(demo3DPage);
     }
 }
 
-(<any> document).registerElement(EclipseTwo.tag, EclipseTwo);
+customElements.define(EclipseTwo.tag, EclipseTwo);

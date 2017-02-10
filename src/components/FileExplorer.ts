@@ -8,16 +8,13 @@
 import * as electron from 'electron';
 import * as path from 'path';
 import * as fs from 'fs';
+import customElements from 'ui/customElements';
 
-export default class FileExplorer extends HTMLUListElement {
+export default class FileExplorer extends HTMLElement {
     static tag = 'eclipse-fileexplorer';
     static folderClosed = 'fa-folder';
     static folderOpen = 'fa-folder-open';
     static fileIcon = 'fa-file-o';
-
-    static createElement(): FileExplorer {
-        return <FileExplorer> document.createElement(FileExplorer.tag);
-    }
 
     clickNode(e: MouseEvent) {
         const entry = (<HTMLElement> e.currentTarget);
@@ -79,7 +76,7 @@ export default class FileExplorer extends HTMLUListElement {
         return li;
     }
 
-    attachedCallback(): void {
+    connectedCallback(): void {
         this.style.overflow = 'auto';
         this.style.height = '100%';
         this.style.width = '20%';
@@ -95,4 +92,4 @@ export default class FileExplorer extends HTMLUListElement {
     }
 }
 
-(<any> document).registerElement(FileExplorer.tag, FileExplorer);
+customElements.define(FileExplorer.tag, FileExplorer);

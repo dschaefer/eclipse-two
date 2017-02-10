@@ -1,6 +1,8 @@
 {
     "compilerOptions": {
-        "target": "es5",
+        "target" : "es6",
+        "module": "commonjs",
+        "moduleResolution": "node",
         "sourceMap": true,
         "allowJs": true,
         "rootDirs" : [
@@ -8,7 +10,6 @@
         ],
         "rootDir": "src",
         "outDir": "dist",
-        "moduleResolution": "node",
         "baseUrl": "./src"
     },
     "include": [

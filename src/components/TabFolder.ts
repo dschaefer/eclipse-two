@@ -5,6 +5,7 @@
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  *******************************************************************************/
+import customElements from 'ui/customElements';
 
 export interface TabItem extends HTMLElement {
     // The element to show in the tab header for this tab item
@@ -14,14 +15,10 @@ export interface TabItem extends HTMLElement {
     close(): boolean;
 }
 
-class TabElement extends HTMLLIElement {
+class TabElement extends HTMLElement {
     static tag = 'eclipse-tab';
 
     tabItem: HTMLElement;
-
-    static createElement(): TabElement {
-        return <TabElement> document.createElement(TabElement.tag);
-    }
 
     activateTab() {
         this.tabItem.style.display = 'block';
@@ -33,7 +30,7 @@ class TabElement extends HTMLLIElement {
         this.classList.remove(TabFolder.classActive);
     }
 
-    attachedCallback(): void {
+    connectedCallback(): void {
         if (!this.tabItem) {
             return;
         }
@@ -65,7 +62,7 @@ class TabElement extends HTMLLIElement {
     }
 }
 
-(<any> document).registerElement(TabElement.tag, TabElement);
+customElements.define(TabElement.tag, TabElement);
 
 export default class TabFolder extends HTMLElement {
     static tag = 'eclipse-tab-folder';
@@ -74,16 +71,12 @@ export default class TabFolder extends HTMLElement {
     static classActive = 'eclipse-tab-active';
     static classHeader = 'eclipse-tab-header';
 
-    static createElement(): TabFolder {
-        return <TabFolder> document.createElement(TabFolder.tag);
-    }
-
     currentTab: TabElement;
 
     private addItem(element: HTMLElement) {
         const header = this.children[0];
 
-        const tab = TabElement.createElement();
+        const tab = new TabElement();
         tab.tabItem = element;
         tab.addEventListener('click', e => {
             this.activateTab(tab);
@@ -118,7 +111,7 @@ export default class TabFolder extends HTMLElement {
         }
     }
 
-    attachedCallback(): void {
+    connectedCallback(): void {
         const header = document.createElement('ul');
         header.classList.add(TabFolder.classHeader);
 
@@ -147,4 +140,4 @@ export default class TabFolder extends HTMLElement {
     }
 }
 
-(<any> document).registerElement(TabFolder.tag, TabFolder);
+customElements.define(TabFolder.tag, TabFolder);

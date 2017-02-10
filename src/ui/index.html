@@ -7,9 +7,9 @@
     <link rel="stylesheet" href="style.css">
   </head>
   <body>
-    <eclipse-two></eclipse-two>
   </body>
   <script>
-    require('../../dist/ui/EclipseTwo.js');
+    const EclipseTwo = require('../../dist/ui/EclipseTwo.js').default;
+    document.querySelector('body').appendChild(new EclipseTwo());
   </script>
 </html>

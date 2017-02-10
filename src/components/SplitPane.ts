@@ -5,6 +5,8 @@
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  *******************************************************************************/
+import customElements from 'ui/customElements';
+
 class Splitter extends HTMLElement {
     static tag = 'eclipse-splitter';
 
@@ -12,10 +14,6 @@ class Splitter extends HTMLElement {
     startX: number;
     _move: any;
     _stop: any;
-
-    static createElement(): Splitter {
-        return (<any> document).createElement(Splitter.tag);
-    }
 
     getLeft() {
         return <HTMLElement> this.previousElementSibling;
@@ -25,7 +23,9 @@ class Splitter extends HTMLElement {
         return <HTMLElement> this.nextElementSibling;
     }
 
-    createdCallback() {
+    constructor() {
+        super();
+
         this.dragging = false;
 
         this._move = this.move.bind(this);
@@ -55,7 +55,7 @@ class Splitter extends HTMLElement {
         }
     }
 
-    attachedCallback() {
+    connectedCallback() {
         this.style.width = '0';
         this.style.padding = '1px';
         this.style.background = '#ccc';
@@ -72,16 +72,12 @@ class Splitter extends HTMLElement {
     }
 }
 
-(<any> document).registerElement(Splitter.tag, Splitter);
+customElements.define(Splitter.tag, Splitter);
 
 export default class SplitPane extends HTMLElement {
     static tag = 'eclipse-splitpane';
 
-    static createElement(): SplitPane {
-        return <SplitPane> document.createElement(SplitPane.tag);
-    }
-
-    attachedCallback() {
+    connectedCallback() {
         this.style.display = 'flex';
         this.style.overflow = 'hidden';
         this.style.width = '100%';
@@ -93,10 +89,10 @@ export default class SplitPane extends HTMLElement {
         }
 
         for (var i = 1; i < kids.length; i++) {
-            const splitter = Splitter.createElement();
+            const splitter = new Splitter();
             this.insertBefore(splitter, kids[i]);
         }
     }
 }
 
-(<any> document).registerElement(SplitPane.tag, SplitPane);
+customElements.define(SplitPane.tag, SplitPane);

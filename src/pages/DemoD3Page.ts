@@ -1,15 +1,12 @@
+import customElements from 'ui/customElements';
 import * as d3 from 'd3';
 
 export default class DemoD3Page extends HTMLElement {
     static tag = 'eclipse-demod3';
 
-    static createElement(): DemoD3Page {
-        return <DemoD3Page> document.createElement(DemoD3Page.tag);
-    }
-
     svg: HTMLElement;
 
-    attachedCallback() {
+    connectedCallback() {
         this.svg = <HTMLElement> d3.select(this).append('svg')
             .attr('width', '100%')
             .attr('height', '100%')
@@ -41,4 +38,4 @@ export default class DemoD3Page extends HTMLElement {
     }
 }
 
-(<any> document).registerElement(DemoD3Page.tag, DemoD3Page);
+customElements.define(DemoD3Page.tag, DemoD3Page);

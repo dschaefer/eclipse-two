@@ -7,7 +7,10 @@
  *******************************************************************************/
 /// <reference path="../../node_modules/monaco-editor/monaco.d.ts" />
 import { Editor } from 'ui/Editor';
+import customElements from 'ui/customElements';
+
 import * as loader from 'monaco-editor/min/vs/loader';
+
 import * as electron from 'electron';
 import * as path from 'path';
 import * as fs from 'fs';
@@ -23,10 +26,6 @@ export default class MonacoEditor extends Editor {
     static tag = 'monaco-editor';
 
     editor: monaco.editor.IStandaloneCodeEditor;
-
-    static createElement(): MonacoEditor {
-        return <MonacoEditor> document.createElement(MonacoEditor.tag);
-    }
 
     openFile(filePath: string) {
         super.openFile(filePath);
@@ -66,8 +65,12 @@ export default class MonacoEditor extends Editor {
             case '.json':
                 language = 'json';
                 break;
-            default:
-                language = 'javascript';
+            case '.ts':
+                language = 'typescript';
+                break;
+            case '.md':
+                language = 'markdown';
+                break;
         }
 
         this.editor = monaco.editor.create(this, {
@@ -77,10 +80,10 @@ export default class MonacoEditor extends Editor {
         });
     }
 
-    attachedCallback(): void {
+    connectedCallback(): void {
         this.style.height = '100%';
         this.style.width = '100%';
     }
 }
 
-(<any> document).registerElement(MonacoEditor.tag, MonacoEditor);
+customElements.define(MonacoEditor.tag, MonacoEditor);
