@@ -9,8 +9,6 @@
 import { Editor } from 'ui/Editor';
 import customElements from 'ui/customElements';
 
-import * as loader from 'monaco-editor/min/vs/loader';
-
 import * as electron from 'electron';
 import * as path from 'path';
 import * as fs from 'fs';
@@ -18,7 +16,8 @@ import * as fs from 'fs';
 const basePath = path.resolve(path.join(electron.remote.app.getAppPath(), 'node_modules/monaco-editor/min')).replace(/\\/g, '/').replace(/ /g, '%20');
 const baseUrl = ('/' === basePath.charAt(0) ? 'file://' : 'file:///') + basePath;
 
-loader.require.config({
+require('monaco-editor/min/vs/loader');
+(<any>self).require.config({
     baseUrl: baseUrl
 });
 
@@ -38,7 +37,7 @@ export default class MonacoEditor extends Editor {
                 // workaround monaco-typescript not understanding the environment
                 (<any> self).process.browser = true;
 
-                loader.require(['vs/editor/editor.main'], () => this.createEditor(data));
+                (<any>self).require(['vs/editor/editor.main'], () => this.createEditor(data));
             } else {
                 this.createEditor(data);
             }
