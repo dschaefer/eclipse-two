@@ -2,7 +2,7 @@ import customElements from 'ui/customElements';
 import * as d3 from 'd3';
 
 export default class DemoD3Page extends HTMLElement {
-    static tag = 'eclipse-demod3';
+    static tag = 'two-demod3';
 
     svg: HTMLElement;
 

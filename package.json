@@ -1,7 +1,7 @@
 {
-  "name": "eclipse-two",
+  "name": "two-ide",
   "version": "0.1.0",
-  "description": "Eclipse Two IDE built with Electron",
+  "description": "Two IDE built with Electron",
   "main": "dist/core/main.js",
   "scripts": {
     "start": "electron .",

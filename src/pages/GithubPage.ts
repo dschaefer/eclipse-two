@@ -8,7 +8,7 @@
 import customElements from 'ui/customElements';
 
 export default class GithubPage extends HTMLElement {
-    static tag = 'eclipse-github';
+    static tag = 'two-github';
 
     connectedCallback(): void {
         const home = 'https://github.com/dschaefer/eclipse-two';

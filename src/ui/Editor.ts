@@ -9,7 +9,7 @@ import customElements from 'ui/customElements';
 import * as path from 'path';
 
 export class EditorTab extends HTMLElement {
-    static tag = 'eclipse-editortab';
+    static tag = 'two-editortab';
 
     editor: Editor;
     a: HTMLAnchorElement;

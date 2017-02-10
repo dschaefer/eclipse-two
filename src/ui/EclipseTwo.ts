@@ -19,12 +19,13 @@ import TabFolder from 'components/TabFolder';
 
 import { UIExtension, PageProvider } from 'ui/UIExtension';
 
+import Dashboard from 'pages/Dashboard';
 import GithubPage from 'pages/GithubPage';
 import DemoD3Page from 'pages/DemoD3Page';
 import Demo3DPage from 'pages/Demo3DPage';
 
 export default class EclipseTwo extends TabFolder {
-    static tag = 'eclipse-two';
+    static tag = 'two-ide';
 
     extensions: { [id: string]: UIExtension };
 
@@ -55,12 +56,12 @@ export default class EclipseTwo extends TabFolder {
         super.connectedCallback();
 
         // Temporary until we get a real dashboard
-        const dashboard = document.createElement('div');
-        dashboard.setAttribute(TabFolder.attributeLabel, 'Eclipse Two');
+        const dashboard = new Dashboard();
+        dashboard.setAttribute(TabFolder.attributeLabel, 'Two IDE');
         this.appendChild(dashboard);
 
         // Load Code page from extension
-        const codeProvider = this.extensions['eclipse-code'].pageProviders['code-page'];
+        const codeProvider = this.extensions['two-code'].pageProviders['code-page'];
         const codePage = <HTMLElement> codeProvider.create();
         codePage.setAttribute(TabFolder.attributeLabel, codeProvider.label);
         // Make active for now

@@ -8,7 +8,7 @@
 import customElements from 'ui/customElements';
 
 class Splitter extends HTMLElement {
-    static tag = 'eclipse-splitter';
+    static tag = 'two-splitter';
 
     dragging: boolean;
     startX: number;
@@ -75,7 +75,7 @@ class Splitter extends HTMLElement {
 customElements.define(Splitter.tag, Splitter);
 
 export default class SplitPane extends HTMLElement {
-    static tag = 'eclipse-splitpane';
+    static tag = 'two-splitpane';
 
     connectedCallback() {
         this.style.display = 'flex';

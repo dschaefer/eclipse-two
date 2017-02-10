@@ -27,7 +27,8 @@ First stage is to get the IDE to the point where we can self host. That includes
 - Build support that runs 'npm run build' and presents output in a console pane
 - Launch support that runs 'npm start', presents output, and has a stop button that kills the process
 
-File Explorer will be hand roled using rc-tree (React Components Tree). Editor is Monaco.
+File Explorer will be hand roled.
+Editor is Monaco.
 Build and Launch will follow design language of Eclipse Launch Bar.
 
 ### Phase 2 - Git support

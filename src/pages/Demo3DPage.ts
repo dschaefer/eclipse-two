@@ -2,7 +2,7 @@ import customElements from 'ui/customElements';
 import * as THREE from 'three';
 
 export default class Demo3DPage extends HTMLElement {
-    static tag = 'eclipse-demo3d';
+    static tag = 'two-demo3d';
 
     camera: THREE.PerspectiveCamera;
     scene: THREE.Scene;

@@ -14,7 +14,7 @@ const url = require('url')
 
 let mainWindow
 
-app.setName("Eclipse Two");
+app.setName("Two IDE");
 
 function createWindow () {
   mainWindow = new BrowserWindow({width: 800, height: 600})

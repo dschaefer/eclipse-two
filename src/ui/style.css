@@ -8,7 +8,11 @@ html, body {
     background: #1e1e1e;
 }
 
-eclipse-two > .eclipse-tab-header {
+two-dashboard {
+    color: white;
+    padding: 10px;
+}
+two-ide > .two-tab-header {
     background-color: #333;
     list-style-type: none;
     margin: 0;
@@ -16,11 +20,11 @@ eclipse-two > .eclipse-tab-header {
     overflow: hidden;
 }
 
-eclipse-two > .eclipse-tab-header eclipse-tab {
+two-ide > .two-tab-header two-tab {
     float: left;
 }
 
-eclipse-two > .eclipse-tab-header a {
+two-ide > .two-tab-header a {
     display: block;
     color: white;
     text-align: center;
@@ -28,11 +32,11 @@ eclipse-two > .eclipse-tab-header a {
     padding: 14px 16px;
 }
 
-eclipse-two > .eclipse-tab-header a:hover {
+two-ide > .two-tab-header a:hover {
     background-color: #111;
 }
 
-eclipse-two > .eclipse-tab-header .eclipse-tab-active {
+two-ide > .two-tab-header .two-tab-active {
     background-color: #4caf50;
 }
 
@@ -43,7 +47,7 @@ nav.editortabs ul {
     overflow: hidden;
 }
 
-nav.editortabs eclipse-editortab {
+nav.editortabs two-editortab {
     float: left;
     color: white;
     padding: 0px 10px;
@@ -58,38 +62,38 @@ nav.editortabs a {
     padding-right: 10px;
 }
 
-nav.editortabs eclipse-editortab:hover {
+nav.editortabs two-editortab:hover {
     background-color: #111;
 }
 
-nav.editortabs eclipse-editortab.active {
+nav.editortabs two-editortab.active {
     background-color: #4caf50;
 }
 
-eclipse-fileexplorer .fa-ul {
+two-fileexplorer .fa-ul {
     margin-left: 1.5em;
 }
 
-eclipse-fileexplorer .fa-li {
+two-fileexplorer .fa-li {
     left: -1.5em;
     width: 1.5em;
 }
 
-eclipse-fileexplorer .fa-li.folder {
+two-fileexplorer .fa-li.folder {
     color: #dd0;
 }
 
-eclipse-fileexplorer .fa-li.file {
+two-fileexplorer .fa-li.file {
     color: white;
 }
 
-eclipse-fileexplorer a {
+two-fileexplorer a {
     text-decoration: none;
     color: white;
 }
 
-eclipse-github button,
-eclipse-github input {
+two-github button,
+two-github input {
   outline: none;
 }
 
@@ -107,21 +111,21 @@ eclipse-github input {
   padding: 0 6px;
 }
 
-eclipse-github button,
-eclipse-github input[type="submit"],
-eclipse-github button[disabled]:hover {
+two-github button,
+two-github input[type="submit"],
+two-github button[disabled]:hover {
   border: solid 1px transparent;
   background: transparent;
 }
 
-eclipse-github button:hover,
-eclipse-github input[type="submit"]:hover {
+two-github button:hover,
+two-github input[type="submit"]:hover {
   border-color: #ccc;
   background: -webkit-linear-gradient(bottom, #cccccc 0%, #f2f2f2 99%);
 }
 
-eclipse-github button:active,
-eclipse-github input[type="submit"]:active {
+two-github button:active,
+two-github input[type="submit"]:active {
   border-color: #bbb;
   background: -webkit-linear-gradient(bottom, #e2e2e2 0%, #bbbbbb 99%);
 }

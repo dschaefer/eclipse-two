@@ -16,7 +16,7 @@ export interface TabItem extends HTMLElement {
 }
 
 class TabElement extends HTMLElement {
-    static tag = 'eclipse-tab';
+    static tag = 'two-tab';
 
     tabItem: HTMLElement;
 
@@ -65,11 +65,11 @@ class TabElement extends HTMLElement {
 customElements.define(TabElement.tag, TabElement);
 
 export default class TabFolder extends HTMLElement {
-    static tag = 'eclipse-tab-folder';
-    static attributeLabel = 'eclipse-class-label';
-    static classClosable = 'eclipse-tab-closable';
-    static classActive = 'eclipse-tab-active';
-    static classHeader = 'eclipse-tab-header';
+    static tag = 'two-tab-folder';
+    static attributeLabel = 'two-class-label';
+    static classClosable = 'two-tab-closable';
+    static classActive = 'two-tab-active';
+    static classHeader = 'two-tab-header';
 
     currentTab: TabElement;
 

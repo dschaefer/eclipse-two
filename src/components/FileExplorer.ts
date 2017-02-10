@@ -11,7 +11,7 @@ import * as fs from 'fs';
 import customElements from 'ui/customElements';
 
 export default class FileExplorer extends HTMLElement {
-    static tag = 'eclipse-fileexplorer';
+    static tag = 'two-fileexplorer';
     static folderClosed = 'fa-folder';
     static folderOpen = 'fa-folder-open';
     static fileIcon = 'fa-file-o';

@@ -15,7 +15,7 @@ import MonacoEditor from 'components/Monaco';
 import * as path from 'path';
 
 export default class CodePage extends HTMLElement {
-    static tag = 'eclipse-codepage';
+    static tag = 'two-codepage';
 
     tabList: HTMLUListElement;
     editorSpace: HTMLElement;
