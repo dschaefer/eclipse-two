@@ -49,7 +49,7 @@ export default class MonacoEditor extends Editor {
             this.editor.dispose();
         }
         
-        var language: string;
+        let language: string;
 
         switch (path.extname(this.filePath)) {
             case '.js':

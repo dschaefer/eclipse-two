@@ -28,8 +28,8 @@ export default class Demo3DPage extends HTMLElement {
 		this.scene.add( light );
 
 		const geometry = new THREE.BoxBufferGeometry( 20, 20, 20 );
-		for ( var i = 0; i < 2000; i ++ ) {
-			var object = new THREE.Mesh( geometry, new THREE.MeshLambertMaterial( { color: Math.random() * 0xffffff } ) );
+		for ( let i = 0; i < 2000; i ++ ) {
+			let object = new THREE.Mesh( geometry, new THREE.MeshLambertMaterial( { color: Math.random() * 0xffffff } ) );
 			object.position.x = Math.random() * 800 - 400;
 			object.position.y = Math.random() * 800 - 400;
 			object.position.z = Math.random() * 800 - 400;

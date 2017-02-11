@@ -121,7 +121,7 @@ export default class TabFolder extends HTMLElement {
             this.appendChild(header);
         }
 
-        for (var i = 1; i < this.children.length; i++) {
+        for (let i = 1; i < this.children.length; i++) {
             if (this.children[i] instanceof HTMLElement) {
                 this.addItem(<HTMLElement> this.children[i]);
             }
@@ -129,7 +129,7 @@ export default class TabFolder extends HTMLElement {
 
         const observer = new MutationObserver(mutations => {
             mutations.forEach(mutation => {
-                for (var i = 0; i < mutation.addedNodes.length; i++) {
+                for (let i = 0; i < mutation.addedNodes.length; i++) {
                     if (mutation.addedNodes[i] instanceof HTMLElement) {
                         this.addItem(<HTMLElement> mutation.addedNodes[i]);
                     }

@@ -8,6 +8,6 @@ codeUIExtension.pageProviders['code-page'] = {
     create(): HTMLElement {
         return new CodePage();
     }
-}
+};
 
 export default codeUIExtension;
