@@ -7,16 +7,20 @@
     "start": "electron .",
     "build": "tsc",
     "watch": "tsc -w",
+    "package": "electron-packager . 'Two'",
+    "package-all": "electron-packager . 'Two' --all",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Doug Schaefer and others",
   "license": "EPL-1.0",
+  "repository": "https://github.com/dschaefer/eclipse-two",
   "devDependencies": {
-    "electron": "1.5",
-    "typescript": "2.1",
-    "@types/node": "^6.0.55",
     "@types/d3": "^4.4.0",
-    "@types/three": "^0.81.0"
+    "@types/node": "^6.0.55",
+    "@types/three": "^0.81.0",
+    "electron": "1.6",
+    "electron-packager": "^8.5.1",
+    "typescript": "2.1"
   },
   "dependencies": {
     "app-module-path": "^2.2.0",
