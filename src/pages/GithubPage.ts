@@ -51,6 +51,9 @@ export default class GithubPage extends HTMLElement {
         reloadButton.id = 'github-reload';
         reloadButton.title = 'Reload';
         reloadButton.textContent = '\u27f3';
+        reloadButton.onclick = () => {
+            webview.openDevTools();
+        };
         controls.appendChild(reloadButton);
 
         const locationForm = document.createElement('form');
@@ -75,12 +78,7 @@ export default class GithubPage extends HTMLElement {
         locationSubmit.type = 'submit';
         locationSubmit.value = 'Go';
         locationForm.appendChild(locationSubmit);
-
-        /*
-        webview.addEventListener('dom-ready', () => {
-            webview.openDevTools()
-        });
-        */
+      
     }
 }
 

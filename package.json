@@ -7,8 +7,8 @@
     "start": "electron .",
     "build": "tsc",
     "watch": "tsc -w",
-    "package": "electron-packager . 'Two'",
-    "package-all": "electron-packager . 'Two' --all",
+    "package": "electron-packager . Two",
+    "package-all": "electron-packager . Two --all",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Doug Schaefer and others",
