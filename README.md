@@ -1,6 +1,12 @@
 # The Two IDE
 
-A full featured IDE based on Electron built by the Eclipse community.
+A full featured IDE based on Electron.
+
+NOTE: I am putting a pause on this version to take a slightly different tact.
+I'll be working on a new IDE called Two4Arduino to see if we can take these concepts and make a great IDE for Arduino.
+As I blogged recently, this is about taking IDE building and turn it on it's ear.
+Leverage components available in npm, make new ones where necessary, and then wrap them in an IDE shell specially built for a given purpose.
+Let's see if that works. More later...
 
 The philosophy is to treat the IDE as a web-site which has access to local resources and tools as well as cloud based services.
 It brings a new user experience to the desktop IDE that is friendly, integrated, and powerful.
