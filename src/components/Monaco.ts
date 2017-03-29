@@ -13,23 +13,22 @@ import * as electron from 'electron';
 import * as path from 'path';
 import * as fs from 'fs';
 
-const basePath = path.resolve(path.join(electron.remote.app.getAppPath(), 'node_modules/monaco-editor/min')).replace(/\\/g, '/').replace(/ /g, '%20');
-const baseUrl = ('/' === basePath.charAt(0) ? 'file://' : 'file:///') + basePath;
-
 export default class MonacoEditor extends Editor {
     static tag = 'monaco-editor';
 
     editor: monaco.editor.IStandaloneCodeEditor;
-
-    amdRequire: any;
 
     openFile(filePath: string) {
         super.openFile(filePath);
 
         fs.readFile(filePath, 'UTF-8', (err, data) => {
             if (typeof monaco === 'undefined') {
-                this.amdRequire = require('monaco-editor/min/vs/loader.js').require;
-                this.amdRequire.config({
+                const amdRequire = require('monaco-editor/min/vs/loader.js').require;
+
+                const basePath = path.resolve(path.join(electron.remote.app.getAppPath(),
+                    'node_modules/monaco-editor/min')).replace(/\\/g, '/').replace(/ /g, '%20');
+                const baseUrl = ('/' === basePath.charAt(0) ? 'file://' : 'file:///') + basePath;
+                amdRequire.config({
                     baseUrl: baseUrl
                 });
 
@@ -39,7 +38,7 @@ export default class MonacoEditor extends Editor {
                 // workaround monaco-typescript not understanding the environment
                 (<any> self).process.browser = true;
 
-                this.amdRequire(['vs/editor/editor.main'], () => this.createEditor(data));
+                amdRequire(['vs/editor/editor.main'], () => this.createEditor(data));
             } else {
                 this.createEditor(data);
             }
