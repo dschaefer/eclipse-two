@@ -15,18 +15,17 @@
   "license": "EPL-1.0",
   "repository": "https://github.com/dschaefer/eclipse-two",
   "devDependencies": {
-    "@types/d3": "^4.4.0",
-    "@types/node": "^6.0.55",
-    "@types/three": "^0.81.0",
-    "electron": "^1.6",
-    "electron-packager": "^8.5.1",
-    "typescript": "^2.2"
+    "@types/d3": "4.7",
+    "@types/node": "7.0",
+    "@types/three": "0.84",
+    "electron": "1.6.2",
+    "typescript": "2.2"
   },
   "dependencies": {
-    "app-module-path": "^2.2.0",
-    "d3": "^4.4.1",
-    "font-awesome": "^4.7.0",
-    "monaco-editor": "^0.8",
-    "three": "^0.83.0"
+    "app-module-path": "2.2",
+    "d3": "4.7",
+    "font-awesome": "4.7",
+    "monaco-editor": "0.8",
+    "three": "0.84"
   }
 }
